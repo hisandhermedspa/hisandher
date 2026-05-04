@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Intake — His & Her Beauty Bar And Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f2ea;
+    --surface: #ffffff;
+    --surface-soft: #fbf6ee;
+    --ink: #1c130d;
+    --ink-soft: #5a4a3f;
+    --ink-faint: #8a7a6e;
+    --line: #e6dac8;
+    --line-strong: #d4c4ad;
+    --accent: #8a3a2a;
+    --accent-soft: rgba(138, 58, 42, 0.08);
+    --accent-line: rgba(138, 58, 42, 0.25);
+    --shadow: 0 1px 2px rgba(28, 19, 13, 0.04), 0 8px 24px rgba(28, 19, 13, 0.04);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    font-size: 15px;
+    background-image:
+      radial-gradient(at 20% 0%, rgba(138, 58, 42, 0.03), transparent 50%),
+      radial-gradient(at 80% 100%, rgba(138, 58, 42, 0.04), transparent 50%);
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+  }
+
+  /* Header */
+  header.hero {
+    text-align: center;
+    margin-bottom: 56px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid var(--accent-line);
+    border-radius: 100px;
+    background: var(--accent-soft);
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    font-variation-settings: "opsz" 144;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 300;
+  }
+
+  .hero-meta {
+    color: var(--ink-soft);
+    font-size: 14px;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .hero-meta strong { color: var(--ink); font-weight: 500; }
+
+  /* Sections */
+  section.fieldset {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 32px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 400;
+    min-width: 24px;
+  }
+
+  .section-header h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    flex: 1;
+  }
+
+  .section-header .hint {
+    font-size: 12px;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  .field-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .field-grid.single { grid-template-columns: 1fr; }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field.full { grid-column: 1 / -1; }
+
+  label {
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  label .req { color: var(--accent); margin-left: 2px; }
+
+  label .helper {
+    color: var(--ink-faint);
+    font-weight: 400;
+    margin-left: 6px;
+    font-style: italic;
+    font-size: 11px;
+  }
+
+  input[type="text"], input[type="email"], input[type="tel"], input[type="url"],
+  textarea, select {
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--surface-soft);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 10px 12px;
+    transition: all 0.15s ease;
+    width: 100%;
+  }
+
+  textarea { resize: vertical; min-height: 72px; line-height: 1.5; }
+
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fff;
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+
+  input::placeholder, textarea::placeholder { color: var(--ink-faint); }
+
+  /* Hours grid */
+  .hours-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 16px;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .hours-row:last-child { border-bottom: none; }
+  .hours-row span {
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .hours-row input { padding: 8px 10px; font-size: 13px; }
+
+  /* Checkbox list */
+  .checkbox-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 16px;
+  }
+
+  .checkbox-list label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    cursor: pointer;
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--surface-soft);
+    transition: all 0.15s ease;
+  }
+
+  .checkbox-list label:hover {
+    border-color: var(--accent-line);
+    background: var(--accent-soft);
+  }
+
+  .checkbox-list input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--accent);
+  }
+
+  /* Repeatable items */
+  .repeatable-item {
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom: 14px;
+    background: var(--surface-soft);
+    position: relative;
+  }
+
+  .repeatable-item .item-num {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--ink-faint);
+    font-size: 12px;
+  }
+
+  .btn-remove {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .btn-remove:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .repeatable-item.has-remove { padding-bottom: 50px; }
+
+  .btn-add {
+    width: 100%;
+    background: transparent;
+    border: 1px dashed var(--line-strong);
+    color: var(--ink-soft);
+    font-family: inherit;
+    font-size: 13px;
+    padding: 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin-top: 6px;
+  }
+
+  .btn-add:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-style: solid;
+  }
+
+  /* Submit row */
+  .submit-row {
+    margin-top: 40px;
+    padding: 32px;
+    background: var(--ink);
+    color: var(--surface-soft);
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .submit-row h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+
+  .submit-row p {
+    color: rgba(247, 242, 234, 0.7);
+    font-size: 13px;
+    margin-bottom: 24px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  .btn {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #6e2d20; transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--surface-soft);
+    border: 1px solid rgba(247, 242, 234, 0.3);
+  }
+  .btn-ghost:hover { border-color: rgba(247, 242, 234, 0.7); }
+  .btn-ghost:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* Output */
+  #output-panel {
+    margin-top: 24px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 28px;
+    display: none;
+  }
+  #output-panel.visible { display: block; animation: slideIn 0.3s ease; }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  #output-panel h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+
+  #markdown-output {
+    width: 100%;
+    min-height: 320px;
+    background: var(--surface-soft);
+    border: 1px solid var(--line);
+    padding: 16px;
+    font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--ink);
+    border-radius: 3px;
+    resize: vertical;
+  }
+
+  .output-actions { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--ink);
+    color: var(--surface-soft);
+    padding: 12px 20px;
+    border-radius: 3px;
+    font-size: 13px;
+    box-shadow: 0 8px 24px rgba(28, 19, 13, 0.2);
+    transition: transform 0.3s ease;
+    z-index: 100;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* Save indicator */
+  .save-bar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(247, 242, 234, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: -64px -24px 32px;
+    font-size: 12px;
+    flex-wrap: wrap;
+  }
+
+  .save-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  .save-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4a7a4a;
+    transition: background 0.2s ease;
+  }
+  .save-dot.saving { background: #c89a3a; animation: pulse 0.8s ease infinite; }
+
+  @keyframes pulse { 50% { opacity: 0.4; } }
+
+  .save-actions { display: flex; gap: 8px; }
+
+  .mini-btn {
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    color: var(--ink-soft);
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    padding: 5px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .mini-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .mini-btn.danger:hover { border-color: #a83a2a; color: #a83a2a; }
+
+  /* Footer */
+  footer {
+    margin-top: 56px;
+    text-align: center;
+    color: var(--ink-faint);
+    font-size: 12px;
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .container { padding: 32px 16px 64px; }
+    section.fieldset { padding: 24px 18px; }
+    .field-grid { grid-template-columns: 1fr; }
+    .checkbox-list { grid-template-columns: 1fr; }
+    .hours-row { grid-template-columns: 80px 1fr; gap: 8px; }
+    .btn-row { flex-direction: column; }
+    .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="save-bar">
+    <div class="save-status">
+      <span class="save-dot" id="save-dot"></span>
+      <span id="save-text">All changes saved on this device</span>
+    </div>
+    <div class="save-actions">
+      <button type="button" class="mini-btn" onclick="exportJSON()">Backup as JSON</button>
+      <label class="mini-btn" style="cursor:pointer;">
+        Restore from backup
+        <input type="file" id="json-import" accept=".json" style="display:none;" onchange="importJSON(event)">
+      </label>
+      <button type="button" class="mini-btn danger" onclick="clearAll()">Clear all</button>
+    </div>
+  </div>
+
+  <header class="hero">
+    <span class="eyebrow">Website Project Intake</span>
+    <h1>His & Her Beauty Bar <em>and</em> Academy</h1>
+    <p class="hero-meta">
+      A short brief to capture everything we need to design and build your website. <br>
+      Take your time — no field is mandatory, but more detail means a better site.
+    </p>
+  </header>
+
+  <form id="intake-form">
+
+    <!-- 1. Business Identity -->
+    <section class="fieldset">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2>Business Identity</h2>
+      </div>
+      <div class="field-grid">
+        <div class="field full">
+          <label>Legal business name <span class="req">*</span></label>
+          <input type="text" name="legal_name" value="His & Her Beauty Bar And Academy" required>
+        </div>
+        <div class="field">
+          <label>Trading / display name</label>
+          <input type="text" name="trading_name" placeholder="If different from legal name">
+        </div>
+        <div class="field">
+          <label>Tagline / one-liner</label>
+          <input type="text" name="tagline" placeholder="e.g. Mississauga's premier medical spa">
+        </div>
+        <div class="field full">
+          <label>Brief positioning <span class="helper">2–3 sentences</span></label>
+          <textarea name="positioning" placeholder="What makes you different? Who do you serve? What do you stand for?"></textarea>
+        </div>
+        <div class="field">
+          <label>Brand colours <span class="helper">hex codes if known</span></label>
+          <input type="text" name="colors" placeholder="e.g. #f5e9da, #2a1a14">
+        </div>
+        <div class="field">
+          <label>Preferred fonts <span class="helper">if any</span></label>
+          <input type="text" name="fonts" placeholder="e.g. serif & soft sans">
+        </div>
+        <div class="field full">
+          <label>Tone of voice</label>
+          <input type="text" name="tone" placeholder="e.g. clinical, luxurious, friendly, expert">
+        </div>
+        <div class="field full">
+          <label>Logo, brand guidelines, existing assets</label>
+          <textarea name="brand_assets" placeholder="Drop a Google Drive / Dropbox link, or list what you'll send separately."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Contact & Location -->
+    <section class="fieldset">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2>Contact & Location</h2>
+      </div>
+      <div class="field-grid">
+        <div class="field">
+          <label>Primary phone</label>
+          <input type="tel" name="phone" value="(647) 513-5749">
+        </div>
+        <div class="field">
+          <label>Bookings phone <span class="helper">if different</span></label>
+          <input type="tel" name="phone_bookings">
+        </div>
+        <div class="field">
+          <label>General email</label>
+          <input type="email" name="email" placeholder="hello@...">
+        </div>
+        <div class="field">
+          <label>Bookings email <span class="helper">if different</span></label>
+          <input type="email" name="email_bookings">
+        </div>
+        <div class="field full">
+          <label>Full address</label>
+          <input type="text" name="address" value="3045 Hurontario St, Mississauga ON L5A 2G9">
+        </div>
+        <div class="field full">
+          <label>Service area / catchment <span class="helper">does location matter to clients?</span></label>
+          <input type="text" name="service_area" placeholder="e.g. GTA, Peel Region, Mississauga">
+        </div>
+        <div class="field full">
+          <label>Parking & accessibility notes</label>
+          <textarea name="access_notes" placeholder="Free parking? Wheelchair accessible? Closest transit?"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Hours -->
+    <section class="fieldset">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2>Operating Hours</h2>
+        <span class="hint">e.g. 9 AM – 6 PM, or "By appointment"</span>
+      </div>
+      <div id="hours-block">
+        <div class="hours-row"><span>Monday</span><input type="text" name="hours_mon" placeholder="9 AM – 6 PM"></div>
+        <div class="hours-row"><span>Tuesday</span><input type="text" name="hours_tue" placeholder="9 AM – 6 PM"></div>
+        <div class="hours-row"><span>Wednesday</span><input type="text" name="hours_wed" placeholder="9 AM – 6 PM"></div>
+        <div class="hours-row"><span>Thursday</span><input type="text" name="hours_thu" placeholder="9 AM – 6 PM"></div>
+        <div class="hours-row"><span>Friday</span><input type="text" name="hours_fri" placeholder="9 AM – 6 PM"></div>
+        <div class="hours-row"><span>Saturday</span><input type="text" name="hours_sat" placeholder="9 AM – 6 PM"></div>
+        <div class="hours-row"><span>Sunday</span><input type="text" name="hours_sun" placeholder="Closed"></div>
+      </div>
+      <div class="field full" style="margin-top: 16px;">
+        <label>Holiday or seasonal exceptions</label>
+        <textarea name="hours_exceptions" placeholder="Anything to call out — holiday closures, summer hours, by-appointment days"></textarea>
+      </div>
+    </section>
+
+    <!-- 4. Services -->
+    <section class="fieldset">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2>Services</h2>
+        <span class="hint">add as many as you offer</span>
+      </div>
+      <div id="services-block"></div>
+      <button type="button" class="btn-add" onclick="addService()">+ Add Service</button>
+    </section>
+
+    <!-- 5. Booking & Policies -->
+    <section class="fieldset">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2>Booking & Policies</h2>
+      </div>
+      <div class="field-grid">
+        <div class="field full">
+          <label>Booking system used</label>
+          <input type="text" name="booking_system" placeholder="Vagaro, Fresha, Square, Mindbody, GlossGenius, none, etc.">
+        </div>
+        <div class="field full">
+          <label>Booking link</label>
+          <input type="url" name="booking_url" placeholder="https://...">
+        </div>
+        <div class="field full">
+          <label>Cancellation / no-show policy</label>
+          <textarea name="cancellation_policy" placeholder="e.g. 24-hour notice required, $X fee for late cancellation"></textarea>
+        </div>
+        <div class="field full">
+          <label>Deposit requirements</label>
+          <textarea name="deposit_policy" placeholder="Any deposit needed to book? For which services?"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Team -->
+    <section class="fieldset">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2>The Team</h2>
+        <span class="hint">credentials matter for medical spa</span>
+      </div>
+      <div id="team-block"></div>
+      <button type="button" class="btn-add" onclick="addTeamMember()">+ Add Team Member</button>
+    </section>
+
+    <!-- 7. Visual Assets -->
+    <section class="fieldset">
+      <div class="section-header">
+        <span class="section-num">07</span>
+        <h2>Visual Assets Available</h2>
+        <span class="hint">tick what you have ready</span>
+      </div>
+      <div class="checkbox-list">
+        <label><input type="checkbox" name="asset_logo"> Logo files (SVG / AI / PNG)</label>
+        <label><input type="checkbox" name="asset_exterior"> Exterior / storefront photos</label>
+        <label><input type="checkbox" name="asset_interior"> Interior shots</label>
+        <label><input type="checkbox" name="asset_treatment_rooms"> Treatment room photos</label>
+        <label><input type="checkbox" name="asset_team"> Team headshots</label>
+        <label><input type="checkbox" name="asset_service_action"> Service-in-action photos</label>
+        <label><input type="checkbox" name="asset_before_after"> Before/after photos (with consent)</label>
+        <label><input type="checkbox" name="asset_video"> Video clips</label>
+      </div>
+      <div class="field full" style="margin-top: 16px;">
+        <label>Asset folder link <span class="helper">Drive, Dropbox, etc.</span></label>
+        <input type="url" name="asset_link" placeholder="https://...">
+      </div>
+      <div class="field full" style="margin-top: 12px;">
+        <label>Notes on photos still needed</label>
+        <textarea name="asset_notes" placeholder="What's missing? Are you planning a photoshoot?"></textarea>
+      </div>
+    </section>
+
+    <!-- 8. Social & Reviews -->
+    <section class="fieldset">
+      <div class="section-header">
+        <span class="section-num">08</span>
+        <h2>Social & Reputation</h2>
+      </div>
+      <div class="field-grid">
+        <div class="field"><label>Instagram</label><input type="text" name="instagram" placeholder="@handle or URL"></div>
+        <div class="field"><label>TikTok</label><input type="text" name="tiktok" placeholder="@handle or URL"></div>
+        <div class="field"><label>Facebook</label><input type="text" name="facebook" placeholder="URL"></div>
+        <div class="field"><label>YouTube</label><input type="text" name="youtube" placeholder="URL"></div>
+        <div class="field full">
+          <label>Google Business Profile link</label>
+          <input type="url" name="gbp_url" placeholder="https://g.page/...">
+        </div>
+        <div class="field full">
+          <label>Testimonials to feature</label>
+          <textarea name="testimonials" placeholder="Paste 3–5 favourite reviews you'd like on the site"></textarea>
+        </div>
+        <div class="field full">
+          <label>Press, awards, partnerships</label>
+          <textarea name="press" placeholder="Anything noteworthy"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. SEO & Competitors -->
+    <section class="fieldset">
+      <div class="section-header">
+        <span class="section-num">09</span>
+        <h2>SEO & Competition</h2>
+      </div>
+      <div class="field-grid">
+        <div class="field full">
+          <label>Existing domain</label>
+          <input type="text" name="domain" placeholder="e.g. hisandherbeauty.ca — or 'need to register'">
+        </div>
+        <div class="field full">
+          <label>Existing website to migrate from</label>
+          <input type="url" name="old_site" placeholder="https://...">
+        </div>
+        <div class="field full">
+          <label>Target keywords / search terms</label>
+          <textarea name="keywords" placeholder="e.g. medical spa Mississauga, Botox Mississauga, lash extensions Mississauga"></textarea>
+        </div>
+        <div class="field full">
+          <label>Competitor websites you admire</label>
+          <textarea name="competitors" placeholder="3–5 sites — what do you like about them?"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Tech & Legal -->
+    <section class="fieldset">
+      <div class="section-header">
+        <span class="section-num">10</span>
+        <h2>Tech & Legal</h2>
+      </div>
+      <div class="field-grid">
+        <div class="field full">
+          <label>Email for contact form submissions</label>
+          <input type="email" name="form_email" placeholder="Where should enquiries land?">
+        </div>
+        <div class="field">
+          <label>Newsletter / email marketing</label>
+          <input type="text" name="newsletter" placeholder="Mailchimp, Beehiiv, none">
+        </div>
+        <div class="field">
+          <label>Analytics preference</label>
+          <input type="text" name="analytics" placeholder="GA4, Plausible, none">
+        </div>
+        <div class="field full">
+          <label>Privacy policy / terms <span class="helper">PIPEDA in Canada</span></label>
+          <textarea name="legal_docs" placeholder="Existing? Need help drafting? Link if you have them."></textarea>
+        </div>
+        <div class="field full">
+          <label>Treatment consent forms</label>
+          <textarea name="consent_forms" placeholder="Do clients fill these online or in-clinic? Should they be linked from the site?"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. Medical Spa Specifics -->
+    <section class="fieldset">
+      <div class="section-header">
+        <span class="section-num">11</span>
+        <h2>Medical Spa Details</h2>
+        <span class="hint">specific to Health Canada compliance</span>
+      </div>
+      <div class="field-grid">
+        <div class="field full">
+          <label>Medical director / supervising physician</label>
+          <input type="text" name="medical_director" placeholder="Name and credentials">
+        </div>
+        <div class="field full">
+          <label>Regulated practitioners on staff</label>
+          <textarea name="regulated_staff" placeholder="RNs, NPs, MDs, certified estheticians — list with credentials"></textarea>
+        </div>
+        <div class="field full">
+          <label>Certifications, accreditations, memberships</label>
+          <textarea name="certifications" placeholder="CMA, professional bodies, training certifications"></textarea>
+        </div>
+        <div class="field full">
+          <label>Primary call-to-action <span class="helper">what should visitors do first?</span></label>
+          <input type="text" name="primary_cta" placeholder="e.g. Book free consultation, Call us, Book online">
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. Academy -->
+    <section class="fieldset">
+      <div class="section-header">
+        <span class="section-num">12</span>
+        <h2>Academy</h2>
+        <span class="hint">the training side of the business</span>
+      </div>
+      <div class="field-grid">
+        <div class="field full">
+          <label>Should the Academy be a section or a separate site?</label>
+          <select name="academy_structure">
+            <option value="">Choose…</option>
+            <option>One site, /academy section</option>
+            <option>Separate subdomain (academy.yoursite.com)</option>
+            <option>Separate domain entirely</option>
+            <option>Not sure — recommend</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>Courses offered</label>
+          <textarea name="courses" placeholder="Course name → duration → price → certification awarded → next start date. One per line."></textarea>
+        </div>
+        <div class="field full">
+          <label>Accreditations or affiliations</label>
+          <input type="text" name="academy_accreditation" placeholder="e.g. private career college status, regulatory body">
+        </div>
+        <div class="field full">
+          <label>Enrollment / application process</label>
+          <textarea name="enrollment" placeholder="How do students apply? Is there an interview? Deposit?"></textarea>
+        </div>
+        <div class="field full">
+          <label>Student outcomes / alumni testimonials</label>
+          <textarea name="alumni" placeholder="Job placement rate, alumni success stories"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13. Anything else -->
+    <section class="fieldset">
+      <div class="section-header">
+        <span class="section-num">13</span>
+        <h2>Anything Else</h2>
+      </div>
+      <div class="field full">
+        <label>Anything we haven't asked that we should know</label>
+        <textarea name="extra_notes" rows="4" placeholder="Wishlist features, deadlines, concerns, inspirations…"></textarea>
+      </div>
+      <div class="field full" style="margin-top: 16px;">
+        <label>Target launch date</label>
+        <input type="text" name="launch_date" placeholder="e.g. mid-June 2026 — or 'no rush'">
+      </div>
+    </section>
+
+    <!-- Submit -->
+    <div class="submit-row">
+      <h3>Ready to send</h3>
+      <p>Generate a clean summary document, copy it, or download as Markdown — then send it back to us however you like.</p>
+      <div class="btn-row">
+        <button type="button" class="btn btn-primary" onclick="generateSummary()">Generate Summary</button>
+        <button type="button" class="btn btn-ghost" id="btn-copy" onclick="copyMarkdown()" disabled>Copy</button>
+        <button type="button" class="btn btn-ghost" id="btn-download" onclick="downloadMarkdown()" disabled>Download .md</button>
+      </div>
+    </div>
+
+    <div id="output-panel">
+      <h3>Your intake summary</h3>
+      <textarea id="markdown-output" readonly></textarea>
+      <div class="output-actions">
+        <button type="button" class="btn btn-primary" onclick="copyMarkdown()">Copy to clipboard</button>
+        <button type="button" class="btn btn-primary" onclick="downloadMarkdown()" style="background: var(--ink);">Download .md</button>
+      </div>
+    </div>
+
+  </form>
+
+  <footer>Prepared with care — your studio team.</footer>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  let serviceCount = 0;
+  let teamCount = 0;
+
+  function addService() {
+    serviceCount++;
+    const block = document.getElementById('services-block');
+    const div = document.createElement('div');
+    div.className = 'repeatable-item' + (serviceCount > 1 ? ' has-remove' : '');
+    div.dataset.type = 'service';
+    div.innerHTML = `
+      <span class="item-num">Service ${serviceCount}</span>
+      <div class="field-grid">
+        <div class="field">
+          <label>Service name</label>
+          <input type="text" data-field="name" placeholder="e.g. HydraFacial">
+        </div>
+        <div class="field">
+          <label>Category</label>
+          <input type="text" data-field="category" placeholder="e.g. Facials, Injectables, Laser">
+        </div>
+        <div class="field full">
+          <label>Description</label>
+          <textarea data-field="description" placeholder="2–3 sentences — what it does, who it's for"></textarea>
+        </div>
+        <div class="field">
+          <label>Starting price</label>
+          <input type="text" data-field="price" placeholder="e.g. From $150">
+        </div>
+        <div class="field">
+          <label>Duration</label>
+          <input type="text" data-field="duration" placeholder="e.g. 60 min">
+        </div>
+        <div class="field full">
+          <label>Performed by</label>
+          <input type="text" data-field="performed_by" placeholder="e.g. RN, esthetician, NP">
+        </div>
+      </div>
+      ${serviceCount > 1 ? '<button type="button" class="btn-remove" onclick="this.parentElement.remove()">Remove</button>' : ''}
+    `;
+    block.appendChild(div);
+  }
+
+  function addTeamMember() {
+    teamCount++;
+    const block = document.getElementById('team-block');
+    const div = document.createElement('div');
+    div.className = 'repeatable-item' + (teamCount > 1 ? ' has-remove' : '');
+    div.dataset.type = 'team';
+    div.innerHTML = `
+      <span class="item-num">Member ${teamCount}</span>
+      <div class="field-grid">
+        <div class="field">
+          <label>Full name</label>
+          <input type="text" data-field="name">
+        </div>
+        <div class="field">
+          <label>Title / role</label>
+          <input type="text" data-field="title" placeholder="e.g. Founder, Lead RN, Esthetician">
+        </div>
+        <div class="field full">
+          <label>Credentials & licenses</label>
+          <input type="text" data-field="credentials" placeholder="e.g. RN, BScN, CIDESCO">
+        </div>
+        <div class="field full">
+          <label>Short bio <span class="helper">3–5 sentences</span></label>
+          <textarea data-field="bio"></textarea>
+        </div>
+        <div class="field">
+          <label>Languages spoken</label>
+          <input type="text" data-field="languages" placeholder="e.g. English, Hindi">
+        </div>
+        <div class="field">
+          <label>Services they perform</label>
+          <input type="text" data-field="services" placeholder="comma-separated">
+        </div>
+      </div>
+      ${teamCount > 1 ? '<button type="button" class="btn-remove" onclick="this.parentElement.remove()">Remove</button>' : ''}
+    `;
+    block.appendChild(div);
+  }
+
+  // Seeding happens at the bottom of the script — after restore attempt
+
+  function val(name) {
+    const el = document.querySelector(`[name="${name}"]`);
+    if (!el) return '';
+    if (el.type === 'checkbox') return el.checked ? 'Yes' : '';
+    return (el.value || '').trim();
+  }
+
+  function block(label, value) {
+    if (!value) return '';
+    return `**${label}:** ${value}\n`;
+  }
+
+  function multiBlock(label, value) {
+    if (!value) return '';
+    return `**${label}:**\n${value}\n\n`;
+  }
+
+  function generateSummary() {
+    const lines = [];
+    lines.push(`# Client Intake — ${val('legal_name') || 'Untitled'}`);
+    lines.push(`*Generated ${new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}*\n`);
+
+    // 1. Identity
+    lines.push(`## 1. Business Identity`);
+    lines.push(block('Legal name', val('legal_name')));
+    lines.push(block('Trading name', val('trading_name')));
+    lines.push(block('Tagline', val('tagline')));
+    if (val('positioning')) lines.push(`\n**Positioning:**\n> ${val('positioning')}\n`);
+    lines.push(block('Brand colours', val('colors')));
+    lines.push(block('Preferred fonts', val('fonts')));
+    lines.push(block('Tone of voice', val('tone')));
+    if (val('brand_assets')) lines.push(multiBlock('Brand assets', val('brand_assets')));
+
+    // 2. Contact
+    lines.push(`\n## 2. Contact & Location`);
+    lines.push(block('Phone', val('phone')));
+    lines.push(block('Bookings phone', val('phone_bookings')));
+    lines.push(block('Email', val('email')));
+    lines.push(block('Bookings email', val('email_bookings')));
+    lines.push(block('Address', val('address')));
+    lines.push(block('Service area', val('service_area')));
+    if (val('access_notes')) lines.push(multiBlock('Parking & accessibility', val('access_notes')));
+
+    // 3. Hours
+    lines.push(`\n## 3. Operating Hours`);
+    const days = [['Monday','hours_mon'],['Tuesday','hours_tue'],['Wednesday','hours_wed'],['Thursday','hours_thu'],['Friday','hours_fri'],['Saturday','hours_sat'],['Sunday','hours_sun']];
+    days.forEach(([label, name]) => {
+      if (val(name)) lines.push(`- **${label}:** ${val(name)}`);
+    });
+    if (val('hours_exceptions')) lines.push(`\n**Exceptions:** ${val('hours_exceptions')}`);
+
+    // 4. Services
+    const services = document.querySelectorAll('[data-type="service"]');
+    if (services.length) {
+      lines.push(`\n## 4. Services`);
+      services.forEach((s, i) => {
+        const name = s.querySelector('[data-field="name"]').value.trim();
+        const cat = s.querySelector('[data-field="category"]').value.trim();
+        const desc = s.querySelector('[data-field="description"]').value.trim();
+        const price = s.querySelector('[data-field="price"]').value.trim();
+        const dur = s.querySelector('[data-field="duration"]').value.trim();
+        const perf = s.querySelector('[data-field="performed_by"]').value.trim();
+        // Skip only if ALL fields are empty
+        if (!name && !cat && !desc && !price && !dur && !perf) return;
+        lines.push(`\n### ${name || 'Service ' + (i+1)}`);
+        if (cat) lines.push(`- Category: ${cat}`);
+        if (price) lines.push(`- Price: ${price}`);
+        if (dur) lines.push(`- Duration: ${dur}`);
+        if (perf) lines.push(`- Performed by: ${perf}`);
+        if (desc) lines.push(`\n${desc}`);
+      });
+    }
+
+    // 5. Booking
+    lines.push(`\n## 5. Booking & Policies`);
+    lines.push(block('Booking system', val('booking_system')));
+    lines.push(block('Booking link', val('booking_url')));
+    if (val('cancellation_policy')) lines.push(multiBlock('Cancellation policy', val('cancellation_policy')));
+    if (val('deposit_policy')) lines.push(multiBlock('Deposit policy', val('deposit_policy')));
+
+    // 6. Team
+    const team = document.querySelectorAll('[data-type="team"]');
+    if (team.length) {
+      lines.push(`\n## 6. Team`);
+      team.forEach((m, i) => {
+        const name = m.querySelector('[data-field="name"]').value.trim();
+        const title = m.querySelector('[data-field="title"]').value.trim();
+        const creds = m.querySelector('[data-field="credentials"]').value.trim();
+        const bio = m.querySelector('[data-field="bio"]').value.trim();
+        const langs = m.querySelector('[data-field="languages"]').value.trim();
+        const svcs = m.querySelector('[data-field="services"]').value.trim();
+        // Skip only if ALL fields are empty
+        if (!name && !title && !creds && !bio && !langs && !svcs) return;
+        lines.push(`\n### ${name || 'Team Member ' + (i+1)}`);
+        if (title) lines.push(`- Title: ${title}`);
+        if (creds) lines.push(`- Credentials: ${creds}`);
+        if (langs) lines.push(`- Languages: ${langs}`);
+        if (svcs) lines.push(`- Services: ${svcs}`);
+        if (bio) lines.push(`\n${bio}`);
+      });
+    }
+
+    // 7. Assets
+    lines.push(`\n## 7. Visual Assets Available`);
+    const assets = [
+      ['asset_logo', 'Logo files'],
+      ['asset_exterior', 'Exterior photos'],
+      ['asset_interior', 'Interior shots'],
+      ['asset_treatment_rooms', 'Treatment room photos'],
+      ['asset_team', 'Team headshots'],
+      ['asset_service_action', 'Service-in-action photos'],
+      ['asset_before_after', 'Before/after photos'],
+      ['asset_video', 'Video clips']
+    ];
+    assets.forEach(([n, label]) => {
+      if (val(n)) lines.push(`- [x] ${label}`);
+      else lines.push(`- [ ] ${label}`);
+    });
+    if (val('asset_link')) lines.push(`\n**Asset folder:** ${val('asset_link')}`);
+    if (val('asset_notes')) lines.push(`\n**Notes:** ${val('asset_notes')}`);
+
+    // 8. Social
+    lines.push(`\n## 8. Social & Reputation`);
+    lines.push(block('Instagram', val('instagram')));
+    lines.push(block('TikTok', val('tiktok')));
+    lines.push(block('Facebook', val('facebook')));
+    lines.push(block('YouTube', val('youtube')));
+    lines.push(block('Google Business', val('gbp_url')));
+    if (val('testimonials')) lines.push(multiBlock('Testimonials to feature', val('testimonials')));
+    if (val('press')) lines.push(multiBlock('Press / awards', val('press')));
+
+    // 9. SEO
+    lines.push(`\n## 9. SEO & Competition`);
+    lines.push(block('Domain', val('domain')));
+    lines.push(block('Existing site', val('old_site')));
+    if (val('keywords')) lines.push(multiBlock('Target keywords', val('keywords')));
+    if (val('competitors')) lines.push(multiBlock('Competitors / inspirations', val('competitors')));
+
+    // 10. Tech
+    lines.push(`\n## 10. Tech & Legal`);
+    lines.push(block('Form submissions email', val('form_email')));
+    lines.push(block('Newsletter platform', val('newsletter')));
+    lines.push(block('Analytics', val('analytics')));
+    if (val('legal_docs')) lines.push(multiBlock('Privacy policy / terms', val('legal_docs')));
+    if (val('consent_forms')) lines.push(multiBlock('Treatment consent forms', val('consent_forms')));
+
+    // 11. Medical spa
+    lines.push(`\n## 11. Medical Spa Details`);
+    lines.push(block('Medical director', val('medical_director')));
+    if (val('regulated_staff')) lines.push(multiBlock('Regulated staff', val('regulated_staff')));
+    if (val('certifications')) lines.push(multiBlock('Certifications', val('certifications')));
+    lines.push(block('Primary CTA', val('primary_cta')));
+
+    // 12. Academy
+    lines.push(`\n## 12. Academy`);
+    lines.push(block('Site structure', val('academy_structure')));
+    if (val('courses')) lines.push(multiBlock('Courses', val('courses')));
+    lines.push(block('Accreditations', val('academy_accreditation')));
+    if (val('enrollment')) lines.push(multiBlock('Enrollment process', val('enrollment')));
+    if (val('alumni')) lines.push(multiBlock('Alumni / outcomes', val('alumni')));
+
+    // 13. Other
+    lines.push(`\n## 13. Other Notes`);
+    if (val('extra_notes')) lines.push(val('extra_notes'));
+    if (val('launch_date')) lines.push(`\n**Target launch:** ${val('launch_date')}`);
+
+    const md = lines.filter(l => l !== '').join('\n').replace(/\n{3,}/g, '\n\n');
+    document.getElementById('markdown-output').value = md;
+    document.getElementById('output-panel').classList.add('visible');
+    document.getElementById('btn-copy').disabled = false;
+    document.getElementById('btn-download').disabled = false;
+
+    setTimeout(() => {
+      document.getElementById('output-panel').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+
+    showToast('Summary generated below ↓');
+  }
+
+  function copyMarkdown() {
+    const text = document.getElementById('markdown-output').value;
+    if (!text) { showToast('Generate the summary first'); return; }
+    navigator.clipboard.writeText(text).then(
+      () => showToast('Copied to clipboard'),
+      () => {
+        const ta = document.getElementById('markdown-output');
+        ta.select();
+        document.execCommand('copy');
+        showToast('Copied to clipboard');
+      }
+    );
+  }
+
+  function downloadMarkdown() {
+    const text = document.getElementById('markdown-output').value;
+    if (!text) { showToast('Generate the summary first'); return; }
+    const businessName = (val('legal_name') || 'client').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const blob = new Blob([text], { type: 'text/markdown' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${businessName}-intake.md`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('Downloaded');
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+  }
+
+  // ======================================================
+  // AUTOSAVE — survives tab close, browser crash, refresh
+  // ======================================================
+  const STORAGE_KEY = 'intake_form_v1';
+  let saveTimer = null;
+  let storageWorks = true;
+
+  // Detect if localStorage is usable (private browsing can block it)
+  try {
+    localStorage.setItem('__test__', '1');
+    localStorage.removeItem('__test__');
+  } catch (e) {
+    storageWorks = false;
+    document.getElementById('save-text').textContent = 'Auto-save unavailable — please use Backup as JSON regularly';
+    document.getElementById('save-dot').style.background = '#c89a3a';
+  }
+
+  function snapshotForm() {
+    const data = { _ts: Date.now(), fields: {}, services: [], team: [] };
+
+    // Named fields (inputs, textareas, selects, checkboxes)
+    document.querySelectorAll('[name]').forEach(el => {
+      if (!el.name || el.name === 'viewport') return;
+      if (el.type === 'checkbox') {
+        data.fields[el.name] = el.checked;
+      } else {
+        data.fields[el.name] = el.value;
+      }
+    });
+
+    // Repeatable items
+    document.querySelectorAll('[data-type="service"]').forEach(s => {
+      const item = {};
+      s.querySelectorAll('[data-field]').forEach(f => item[f.dataset.field] = f.value);
+      data.services.push(item);
+    });
+    document.querySelectorAll('[data-type="team"]').forEach(m => {
+      const item = {};
+      m.querySelectorAll('[data-field]').forEach(f => item[f.dataset.field] = f.value);
+      data.team.push(item);
+    });
+
+    return data;
+  }
+
+  function saveNow() {
+    if (!storageWorks) return;
+    const dot = document.getElementById('save-dot');
+    const txt = document.getElementById('save-text');
+    dot.classList.add('saving');
+    txt.textContent = 'Saving…';
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(snapshotForm()));
+      setTimeout(() => {
+        dot.classList.remove('saving');
+        txt.textContent = 'All changes saved on this device';
+      }, 200);
+    } catch (e) {
+      dot.classList.remove('saving');
+      txt.textContent = 'Save failed — use JSON backup';
+      dot.style.background = '#a83a2a';
+    }
+  }
+
+  function debouncedSave() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveNow, 400);
+  }
+
+  function restoreFrom(data) {
+    if (!data || !data.fields) return false;
+
+    // Named fields
+    Object.entries(data.fields).forEach(([k, v]) => {
+      const el = document.querySelector(`[name="${k}"]`);
+      if (!el) return;
+      if (el.type === 'checkbox') el.checked = !!v;
+      else el.value = v || '';
+    });
+
+    // Services — clear current, rebuild
+    document.getElementById('services-block').innerHTML = '';
+    serviceCount = 0;
+    if (data.services && data.services.length) {
+      data.services.forEach(item => {
+        addService();
+        const last = document.querySelectorAll('[data-type="service"]');
+        const node = last[last.length - 1];
+        Object.entries(item).forEach(([k, v]) => {
+          const f = node.querySelector(`[data-field="${k}"]`);
+          if (f) f.value = v || '';
+        });
+      });
+    } else {
+      addService();
+    }
+
+    // Team — same pattern
+    document.getElementById('team-block').innerHTML = '';
+    teamCount = 0;
+    if (data.team && data.team.length) {
+      data.team.forEach(item => {
+        addTeamMember();
+        const last = document.querySelectorAll('[data-type="team"]');
+        const node = last[last.length - 1];
+        Object.entries(item).forEach(([k, v]) => {
+          const f = node.querySelector(`[data-field="${k}"]`);
+          if (f) f.value = v || '';
+        });
+      });
+    } else {
+      addTeamMember();
+    }
+
+    return true;
+  }
+
+  function tryRestoreFromStorage() {
+    if (!storageWorks) return false;
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return false;
+      const data = JSON.parse(raw);
+      if (restoreFrom(data)) {
+        const when = data._ts ? new Date(data._ts).toLocaleString() : 'earlier';
+        document.getElementById('save-text').textContent = `Restored from last save (${when})`;
+        return true;
+      }
+    } catch (e) {
+      console.warn('Restore failed:', e);
+    }
+    return false;
+  }
+
+  function exportJSON() {
+    const data = snapshotForm();
+    const businessName = (data.fields.legal_name || 'client').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${businessName}-intake-backup.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('Backup downloaded — keep it safe');
+  }
+
+  function importJSON(ev) {
+    const file = ev.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      try {
+        const data = JSON.parse(e.target.result);
+        if (!confirm('This will replace everything currently in the form. Continue?')) return;
+        restoreFrom(data);
+        saveNow();
+        showToast('Restored from backup file');
+      } catch (err) {
+        alert('Could not read that file. Make sure it is the JSON backup from this form.');
+      }
+      ev.target.value = '';
+    };
+    reader.readAsText(file);
+  }
+
+  function clearAll() {
+    if (!confirm('This wipes everything you have entered and cannot be undone. Continue?')) return;
+    if (storageWorks) localStorage.removeItem(STORAGE_KEY);
+    location.reload();
+  }
+
+  // Wire up autosave on every input / change
+  document.addEventListener('input', debouncedSave);
+  document.addEventListener('change', debouncedSave);
+
+  // Warn before leaving if there's unsaved work and storage is broken
+  window.addEventListener('beforeunload', (e) => {
+    if (!storageWorks) {
+      const hasContent = Array.from(document.querySelectorAll('input, textarea')).some(el => {
+        return el.type !== 'checkbox' && el.value && el.value !== el.defaultValue;
+      });
+      if (hasContent) { e.preventDefault(); e.returnValue = ''; }
+    }
+  });
+
+  // On load: try to restore. If nothing saved, seed with one of each.
+  const restored = tryRestoreFromStorage();
+  if (!restored) {
+    addService();
+    addTeamMember();
+  }
+</script>
+
+</body>
+</html>
