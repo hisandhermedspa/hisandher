@@ -17,7 +17,7 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export function AcademyPreview() {
   return (
-    <Section bg="espresso" padding="lg" className="bg-noise relative overflow-hidden">
+    <Section bg="espresso" padding="lg" className="texture-noise relative overflow-hidden">
       {/* Decorative glow */}
       <div className="absolute right-0 top-1/2 h-[500px] w-[500px] -translate-y-1/2 translate-x-1/2 rounded-full bg-gold/5 blur-3xl" />
 

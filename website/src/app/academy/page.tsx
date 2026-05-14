@@ -138,7 +138,7 @@ export default function AcademyPage() {
       </Section>
 
       {/* Enrollment CTA */}
-      <Section bg="espresso" padding="lg" className="bg-noise">
+      <Section bg="espresso" padding="lg" className="texture-noise">
         <div className="mx-auto max-w-2xl text-center">
           <GraduationCap className="mx-auto mb-4 h-8 w-8 text-gold-light" />
           <h2 className="font-serif text-3xl font-light text-cream md:text-4xl">
