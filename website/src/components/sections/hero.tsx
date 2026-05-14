@@ -1,15 +1,35 @@
+import Image from "next/image";
 import { LinkButton } from "@/components/ui/button";
 import { business } from "@/data";
+import { images } from "@/data/images";
 
 export function Hero() {
-  return (
-    <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-espresso">
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-espresso via-espresso-soft/90 to-mocha/80" />
+  const heroImg = images.hero;
 
-      {/* Decorative elements */}
-      <div className="absolute right-0 top-0 h-[600px] w-[600px] translate-x-1/3 -translate-y-1/4 rounded-full bg-gradient-to-br from-gold/10 to-transparent blur-3xl" />
-      <div className="absolute bottom-0 left-0 h-[400px] w-[400px] -translate-x-1/4 translate-y-1/4 rounded-full bg-gradient-to-tr from-rose/10 to-transparent blur-3xl" />
+  return (
+    <section className="relative flex min-h-dvh items-center overflow-hidden bg-espresso">
+      {/* Background image or premium gradient fallback */}
+      {heroImg.src ? (
+        <>
+          <Image
+            src={heroImg.src}
+            alt={heroImg.alt}
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-espresso/90 via-espresso/70 to-espresso/40" />
+        </>
+      ) : (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-br from-espresso via-espresso-soft/90 to-mocha/80" />
+          {/* Decorative warm glow orbs */}
+          <div className="absolute right-0 top-0 h-[600px] w-[600px] translate-x-1/3 -translate-y-1/4 rounded-full bg-gradient-to-br from-gold/10 to-transparent blur-3xl" />
+          <div className="absolute bottom-0 left-0 h-[400px] w-[400px] -translate-x-1/4 translate-y-1/4 rounded-full bg-gradient-to-tr from-rose/10 to-transparent blur-3xl" />
+          <div className="absolute left-1/2 top-1/3 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-gold/5 blur-3xl" />
+        </>
+      )}
 
       {/* Subtle grid pattern */}
       <div

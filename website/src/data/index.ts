@@ -20,3 +20,6 @@ export type { Course } from "./academy";
 
 export { navigation } from "./navigation";
 export type { NavItem } from "./navigation";
+
+export { images } from "./images";
+export type { ImageSlot } from "./images";

@@ -1,8 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Section, SectionHeader } from "@/components/ui/section";
+import { ImageSlot } from "@/components/ui/image-slot";
 import { LinkButton } from "@/components/ui/button";
 import { getFeaturedServices } from "@/data";
+import { images } from "@/data/images";
 
 export function ServicesPreview() {
   const featured = getFeaturedServices();
@@ -16,37 +18,56 @@ export function ServicesPreview() {
       />
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {featured.map((service, i) => (
-          <Link
-            key={service.slug}
-            href={`/services#${service.slug}`}
-            className="group relative overflow-hidden rounded-sm border border-sand/20 bg-cream/30 p-8 transition-all duration-500 hover:-translate-y-1 hover:border-gold/30 hover:bg-white hover:shadow-xl hover:shadow-espresso/5"
-            style={{ animationDelay: `${i * 100}ms` }}
-          >
-            {/* Number */}
-            <span className="absolute right-6 top-6 font-serif text-4xl font-light text-sand/20 transition-colors duration-500 group-hover:text-gold/20">
-              {String(i + 1).padStart(2, "0")}
-            </span>
+        {featured.map((service, i) => {
+          const serviceImg =
+            images.services[service.slug as keyof typeof images.services];
 
-            {/* Gold accent line */}
-            <div className="mb-6 h-px w-8 bg-gold transition-all duration-500 group-hover:w-12" />
+          return (
+            <Link
+              key={service.slug}
+              href={`/services#${service.slug}`}
+              className="group relative overflow-hidden rounded-sm border border-sand/20 bg-cream/30 transition-all duration-500 hover:-translate-y-1 hover:border-gold/30 hover:bg-white hover:shadow-xl hover:shadow-espresso/5"
+            >
+              {/* Service image */}
+              <ImageSlot
+                src={serviceImg?.src ?? null}
+                alt={serviceImg?.alt ?? service.name}
+                width={600}
+                height={400}
+                className="aspect-[3/2] w-full"
+                gradientFrom={
+                  i % 3 === 0
+                    ? "from-gold/15"
+                    : i % 3 === 1
+                      ? "from-rose/15"
+                      : "from-mocha/15"
+                }
+                gradientVia="via-cream-dark/20"
+                gradientTo="to-cream/10"
+              />
 
-            <h3 className="font-serif text-xl font-light text-espresso">
-              {service.name}
-            </h3>
-            <p className="mt-1 text-xs uppercase tracking-[0.15em] text-gold">
-              {service.tagline}
-            </p>
-            <p className="mt-4 text-sm leading-relaxed text-taupe line-clamp-3">
-              {service.description}
-            </p>
+              <div className="p-6 md:p-8">
+                {/* Gold accent line */}
+                <div className="mb-4 h-px w-8 bg-gold transition-all duration-500 group-hover:w-12" />
 
-            <div className="mt-6 flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-espresso transition-all duration-300 group-hover:gap-3 group-hover:text-gold">
-              Learn more
-              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-            </div>
-          </Link>
-        ))}
+                <h3 className="font-serif text-xl font-light text-espresso">
+                  {service.name}
+                </h3>
+                <p className="mt-1 text-xs uppercase tracking-[0.15em] text-gold">
+                  {service.tagline}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-taupe line-clamp-2">
+                  {service.description}
+                </p>
+
+                <div className="mt-5 flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-espresso transition-all duration-300 group-hover:gap-3 group-hover:text-gold">
+                  Learn more
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                </div>
+              </div>
+            </Link>
+          );
+        })}
       </div>
 
       <div className="mt-12 text-center">
