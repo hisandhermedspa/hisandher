@@ -1,29 +1,73 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useScrollHeader } from "@/lib/use-animate-on-scroll";
 import { navigation, business } from "@/data";
 import { LinkButton } from "@/components/ui/button";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  useScrollHeader();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    let ticking = false;
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 60);
+        ticking = false;
+      });
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header
-      id="site-header"
-      className="fixed inset-x-0 top-0 z-50 border-b transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] header-transparent group/header"
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 border-b transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+        scrolled
+          ? "border-sand/20 bg-cream/90 shadow-sm shadow-espresso/5 backdrop-blur-2xl"
+          : "border-transparent bg-gradient-to-b from-espresso/60 to-transparent backdrop-blur-none"
+      )}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 transition-all duration-500 py-5 [[data-scrolled=true]_&]:py-3 lg:px-8">
+      <nav
+        className={cn(
+          "mx-auto flex max-w-7xl items-center justify-between px-6 transition-all duration-500 lg:px-8",
+          scrolled ? "py-3" : "py-5"
+        )}
+      >
         {/* Logo */}
         <Link href="/" className="group flex flex-col">
-          <span className="font-serif text-xl font-light tracking-tight transition-colors duration-500 text-cream [[data-scrolled=true]_&]:text-espresso md:text-2xl">
-            His <span className="italic text-gold-light [[data-scrolled=true]_&]:text-gold">&</span> Her
+          <span
+            className={cn(
+              "font-serif text-xl font-light tracking-tight transition-colors duration-500 md:text-2xl",
+              scrolled ? "text-espresso" : "text-cream"
+            )}
+          >
+            His{" "}
+            <span
+              className={cn(
+                "italic transition-colors duration-500",
+                scrolled ? "text-gold" : "text-gold-light"
+              )}
+            >
+              &
+            </span>{" "}
+            Her
           </span>
-          <span className="text-[10px] uppercase tracking-[0.2em] transition-colors duration-500 text-sand/60 [[data-scrolled=true]_&]:text-taupe">
+          <span
+            className={cn(
+              "text-[10px] uppercase tracking-[0.2em] transition-colors duration-500",
+              scrolled ? "text-taupe" : "text-cream/50"
+            )}
+          >
             Beauty Bar & Academy
           </span>
         </Link>
@@ -34,7 +78,13 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="relative px-4 py-2 text-sm tracking-wide transition-colors duration-300 text-cream/80 hover:text-cream [[data-scrolled=true]_&]:text-mocha [[data-scrolled=true]_&]:hover:text-espresso after:absolute after:inset-x-4 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 hover:after:scale-x-100"
+              className={cn(
+                "relative px-4 py-2 text-sm tracking-wide transition-colors duration-300",
+                "after:absolute after:inset-x-4 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 hover:after:scale-x-100",
+                scrolled
+                  ? "text-mocha hover:text-espresso"
+                  : "text-cream/80 hover:text-cream"
+              )}
             >
               {item.label}
             </Link>
@@ -45,12 +95,23 @@ export function Header() {
         <div className="hidden items-center gap-4 lg:flex">
           <a
             href={`tel:${business.phoneRaw}`}
-            className="flex items-center gap-2 text-sm transition-colors duration-300 text-cream/70 hover:text-cream [[data-scrolled=true]_&]:text-mocha [[data-scrolled=true]_&]:hover:text-espresso"
+            className={cn(
+              "flex items-center gap-2 text-sm transition-colors duration-300",
+              scrolled
+                ? "text-mocha hover:text-espresso"
+                : "text-cream/70 hover:text-cream"
+            )}
           >
             <Phone className="h-4 w-4" />
             {business.phone}
           </a>
-          <LinkButton href="/contact" variant="gold" size="sm" rounded="full" className="shimmer-hover">
+          <LinkButton
+            href="/contact"
+            variant="gold"
+            size="sm"
+            rounded="full"
+            className="shimmer-hover"
+          >
             Book Now
           </LinkButton>
         </div>
@@ -58,22 +119,29 @@ export function Header() {
         {/* Mobile toggle */}
         <button
           type="button"
-          className="lg:hidden p-2 transition-colors duration-300 text-cream [[data-scrolled=true]_&]:text-espresso"
+          className={cn(
+            "p-2 transition-colors duration-300 lg:hidden",
+            scrolled ? "text-espresso" : "text-cream"
+          )}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
-          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {mobileOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
         </button>
       </nav>
 
       {/* Mobile menu */}
       <div
         className={cn(
-          "lg:hidden overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden",
           mobileOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
         )}
       >
-        <div className="space-y-1 px-6 py-4 bg-cream/95 backdrop-blur-xl border-t border-sand/20">
+        <div className="space-y-1 border-t border-sand/20 bg-cream/95 px-6 py-4 backdrop-blur-xl">
           {navigation.map((item) => (
             <Link
               key={item.href}
@@ -84,7 +152,7 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <div className="pt-4 pb-2">
+          <div className="pb-2 pt-4">
             <LinkButton
               href="/contact"
               variant="gold"
