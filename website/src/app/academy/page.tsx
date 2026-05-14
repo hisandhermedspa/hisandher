@@ -157,7 +157,7 @@ export default function AcademyPage() {
               variant="outline"
               size="xl"
               rounded="full"
-              className="border-cream/20 text-cream hover:bg-cream hover:text-espresso"
+              className="!border-cream/40 !text-cream hover:!bg-cream hover:!text-espresso"
             >
               Send a Message
             </LinkButton>
