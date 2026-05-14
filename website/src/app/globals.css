@@ -20,6 +20,8 @@
   --font-sans: "DM Sans", system-ui, sans-serif;
 }
 
+/* ─── Base ─── */
+
 html {
   scroll-behavior: smooth;
 }
@@ -37,10 +39,20 @@ body {
   color: var(--color-espresso);
 }
 
+/* ─── Luxury Timing Curves ─── */
+
+:root {
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ─── Entrance Animations ─── */
+
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -53,32 +65,217 @@ body {
   to { opacity: 1; }
 }
 
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @keyframes subtle-float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
 }
 
+@keyframes line-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(184, 146, 106, 0); }
+  50% { box-shadow: 0 0 20px 4px rgba(184, 146, 106, 0.15); }
+}
+
+/* ─── Animation Utility Classes ─── */
+
 .animate-fade-in-up {
-  animation: fade-in-up 0.8s ease-out both;
+  animation: fade-in-up 0.9s var(--ease-expo) both;
 }
 
 .animate-fade-in {
-  animation: fade-in 0.6s ease-out both;
+  animation: fade-in 0.7s var(--ease-smooth) both;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.8s var(--ease-expo) both;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.9s var(--ease-expo) both;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.9s var(--ease-expo) both;
 }
 
 .animate-float {
   animation: subtle-float 6s ease-in-out infinite;
 }
 
+.animate-line-grow {
+  animation: line-grow 0.8s var(--ease-expo) both;
+  transform-origin: left;
+}
+
+/* Stagger delays */
+.animation-delay-100 { animation-delay: 100ms; }
 .animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
 .animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
 .animation-delay-600 { animation-delay: 600ms; }
+.animation-delay-700 { animation-delay: 700ms; }
 .animation-delay-800 { animation-delay: 800ms; }
+
+/* ─── Scroll-triggered: hidden until visible ─── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s var(--ease-expo), transform 0.9s var(--ease-expo);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s var(--ease-expo), transform 0.8s var(--ease-expo);
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.9s var(--ease-expo), transform 0.9s var(--ease-expo);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.9s var(--ease-expo), transform 0.9s var(--ease-expo);
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger children inside a reveal group */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease-expo), transform 0.7s var(--ease-expo);
+}
+
+.reveal-stagger.visible > *:nth-child(1) { transition-delay: 0ms; opacity: 1; transform: translateY(0); }
+.reveal-stagger.visible > *:nth-child(2) { transition-delay: 100ms; opacity: 1; transform: translateY(0); }
+.reveal-stagger.visible > *:nth-child(3) { transition-delay: 200ms; opacity: 1; transform: translateY(0); }
+.reveal-stagger.visible > *:nth-child(4) { transition-delay: 300ms; opacity: 1; transform: translateY(0); }
+.reveal-stagger.visible > *:nth-child(5) { transition-delay: 400ms; opacity: 1; transform: translateY(0); }
+.reveal-stagger.visible > *:nth-child(6) { transition-delay: 500ms; opacity: 1; transform: translateY(0); }
+
+/* ─── Shimmer Effect (gold CTA buttons) ─── */
+
+.shimmer-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%) skewX(-15deg);
+  transition: none;
+}
+
+.shimmer-hover:hover::after {
+  animation: shimmer-sweep 0.7s var(--ease-smooth);
+}
+
+/* ─── Header Transitions ─── */
+
+.header-transparent {
+  background: transparent;
+  border-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.header-solid {
+  background: rgba(250, 247, 242, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-color: rgba(196, 181, 165, 0.2);
+  box-shadow: 0 1px 3px rgba(26, 17, 10, 0.04), 0 4px 16px rgba(26, 17, 10, 0.03);
+}
+
+/* ─── Parallax-lite ─── */
+
+.parallax-bg {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  .parallax-bg {
+    background-attachment: scroll;
+  }
+}
+
+/* ─── Utility Classes ─── */
 
 .text-gradient {
   background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-rose) 50%, var(--color-gold-light) 100%);
@@ -95,4 +292,23 @@ body {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+}
+
+/* ─── Reduced Motion ─── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal,
+  .reveal-scale,
+  .reveal-left,
+  .reveal-right,
+  .reveal-stagger > * {
+    opacity: 1;
+    transform: none;
+  }
 }

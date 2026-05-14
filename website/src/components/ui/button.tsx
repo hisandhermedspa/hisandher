@@ -9,7 +9,7 @@ const buttonVariants = cva(
       variant: {
         primary:
           "bg-espresso text-cream hover:bg-espresso-soft shadow-lg hover:shadow-xl hover:-translate-y-0.5",
-        gold: "bg-gold text-white hover:bg-gold-light hover:text-espresso shadow-lg hover:shadow-xl hover:-translate-y-0.5",
+        gold: "bg-gold text-white hover:bg-gold-light hover:text-espresso shadow-lg hover:shadow-xl hover:-translate-y-0.5 shimmer-hover",
         outline:
           "border-2 border-espresso/20 text-espresso hover:border-espresso hover:bg-espresso hover:text-cream",
         ghost:
