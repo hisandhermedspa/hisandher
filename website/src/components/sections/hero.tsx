@@ -71,10 +71,9 @@ export function Hero() {
             </LinkButton>
             <LinkButton
               href="/services"
-              variant="outline"
+              variant="outline-light"
               size="xl"
               rounded="full"
-              className="border-cream/20 text-cream hover:bg-cream hover:text-espresso"
             >
               Explore Services
             </LinkButton>

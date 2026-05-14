@@ -154,10 +154,9 @@ export default function AcademyPage() {
             </LinkButton>
             <LinkButton
               href="/contact"
-              variant="outline"
+              variant="outline-light"
               size="xl"
               rounded="full"
-              className="!border-cream/40 !text-cream hover:!bg-cream hover:!text-espresso"
             >
               Send a Message
             </LinkButton>

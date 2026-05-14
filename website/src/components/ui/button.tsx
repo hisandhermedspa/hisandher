@@ -12,6 +12,8 @@ const buttonVariants = cva(
         gold: "bg-gold text-white hover:bg-gold-light hover:text-espresso shadow-lg hover:shadow-xl hover:-translate-y-0.5 shimmer-hover",
         outline:
           "border-2 border-espresso/20 text-espresso hover:border-espresso hover:bg-espresso hover:text-cream",
+        "outline-light":
+          "border-2 border-cream/40 text-cream hover:border-cream hover:bg-cream hover:text-espresso",
         ghost:
           "text-espresso hover:bg-espresso/5",
         cream:
