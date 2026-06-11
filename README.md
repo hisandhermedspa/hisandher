@@ -31,3 +31,6 @@ npm run dev
 
 - Mariyam Rasoli — Owner, Holistic Health Practitioner / Medical Esthetician
 - Christina Payatakis — Medical Esthetician (listed as "Christine" on Fresha)
+
+No team photos on the site — both asked not to appear (privacy / conflict of interest).
+Contact email: hisnandhermedspa@gmail.com (VERIFY the spelling — "hisn..." with an n — before launch).

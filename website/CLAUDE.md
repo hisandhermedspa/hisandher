@@ -126,8 +126,9 @@ Target keywords: med spa Whitby, botox Durham Region, medical esthetician Whitby
 
 ### Add a team member
 1. Add object to `team` array in `src/data/team.ts`
-2. Add photo to `public/team/`
-3. Auto-appears on homepage and team page
+2. Auto-appears on homepage and team page
+   (No photos — the practitioners asked not to appear on the site;
+   team sections render a monogram medallion instead.)
 
 ### Add an academy course
 1. Add object to `academy.courses` in `src/data/academy.ts`

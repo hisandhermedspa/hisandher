@@ -33,64 +33,52 @@ export default function TeamPage() {
 
       {/* Team members */}
       <Section bg="white" padding="lg">
-        <div className="mx-auto max-w-5xl space-y-24">
-          {team.map((member, i) => (
+        <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
+          {team.map((member) => (
             <div
               key={member.name}
-              className={`grid items-center gap-12 md:grid-cols-2 ${i % 2 === 1 ? "md:[direction:rtl] md:[&>*]:![direction:ltr]" : ""}`}
+              className="relative overflow-hidden rounded-sm border border-sand/20 bg-cream/30 p-10 transition-all duration-500 hover:border-gold/30 hover:shadow-xl hover:shadow-espresso/5 md:p-12"
             >
-              {/* Portrait placeholder */}
-              <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-gradient-to-br from-cream-dark via-gold/10 to-rose-light/30">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full border-2 border-gold/20 bg-white/60">
-                      <span className="font-serif text-4xl font-light text-gold">
-                        {member.name.charAt(0)}
+              <div className="mb-8 flex h-20 w-20 items-center justify-center rounded-full border-2 border-gold/20 bg-white/70">
+                <span className="font-serif text-3xl font-light italic text-gold">
+                  {member.name.charAt(0)}
+                </span>
+              </div>
+
+              <span className="text-xs font-medium uppercase tracking-[0.25em] text-gold">
+                {member.title}
+              </span>
+              <h2 className="mt-2 font-serif text-3xl font-light text-espresso md:text-4xl">
+                {member.name}
+              </h2>
+              <p className="mt-1 text-sm text-mocha">{member.credentials}</p>
+
+              <div className="mt-6 h-px w-12 bg-gold" />
+
+              <blockquote className="mt-6 text-base leading-relaxed text-taupe italic">
+                &ldquo;{member.bio}&rdquo;
+              </blockquote>
+
+              {member.languages.length > 1 && (
+                <div className="mt-6">
+                  <p className="text-xs uppercase tracking-[0.15em] text-sand">
+                    Languages
+                  </p>
+                  <div className="mt-2 flex gap-2">
+                    {member.languages.map((lang) => (
+                      <span
+                        key={lang}
+                        className="rounded-full border border-sand/30 px-3 py-1 text-xs text-mocha"
+                      >
+                        {lang}
                       </span>
-                    </div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-mocha/50">
-                      Photo Coming Soon
-                    </p>
+                    ))}
                   </div>
                 </div>
-                {/* Decorative corner */}
-                <div className="absolute bottom-0 right-0 h-24 w-24 border-b-2 border-r-2 border-gold/20" />
-              </div>
+              )}
 
-              {/* Bio */}
-              <div>
-                <span className="text-xs font-medium uppercase tracking-[0.25em] text-gold">
-                  {member.title}
-                </span>
-                <h2 className="mt-2 font-serif text-3xl font-light text-espresso md:text-4xl">
-                  {member.name}
-                </h2>
-                <p className="mt-1 text-sm text-mocha">{member.credentials}</p>
-
-                <div className="mt-6 h-px w-12 bg-gold" />
-
-                <blockquote className="mt-6 text-base leading-relaxed text-taupe italic">
-                  &ldquo;{member.bio}&rdquo;
-                </blockquote>
-
-                {member.languages.length > 1 && (
-                  <div className="mt-6">
-                    <p className="text-xs uppercase tracking-[0.15em] text-sand">
-                      Languages
-                    </p>
-                    <div className="mt-2 flex gap-2">
-                      {member.languages.map((lang) => (
-                        <span
-                          key={lang}
-                          className="rounded-full border border-sand/30 px-3 py-1 text-xs text-mocha"
-                        >
-                          {lang}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
+              {/* Decorative corner */}
+              <div className="absolute bottom-0 right-0 h-16 w-16 border-b-2 border-r-2 border-gold/15" />
             </div>
           ))}
         </div>

@@ -104,69 +104,57 @@ export const images = {
       height: 400,
     },
     microneedling: {
-      src: null,
+      src: "/images/services/microneedling.jpg",
       alt: "Microneedling pen device with serums",
       width: 600,
       height: 400,
     },
     facials: {
-      src: null,
+      src: "/images/services/facials.jpg",
       alt: "Medical-grade facial treatment close-up",
       width: 600,
       height: 400,
     },
     "skin-treatments": {
-      src: null,
+      src: "/images/services/skin-treatments.jpg",
       alt: "Advanced skin treatment serum application close-up",
       width: 600,
       height: 400,
     },
     "chemical-peels": {
-      src: null,
+      src: "/images/services/chemical-peels.jpg",
       alt: "Chemical peel application close-up",
       width: 600,
       height: 400,
     },
     "hair-restoration": {
-      src: null,
-      alt: "Scalp treatment for hair restoration close-up",
+      src: "/images/services/hair-restoration.jpg",
+      alt: "Scalp examination for men's hair restoration",
       width: 600,
       height: 400,
     },
     massage: {
-      src: null,
-      alt: "Relaxation massage close-up",
+      src: "/images/services/massage.jpg",
+      alt: "Therapeutic back massage at His & Her Med Spa",
       width: 600,
       height: 400,
     },
     waxing: {
-      src: null,
+      src: "/images/services/waxing.jpg",
       alt: "Professional waxing treatment close-up",
       width: 600,
       height: 400,
     },
     "laser-hair-removal": {
-      src: null,
-      alt: "Laser hair removal device treatment close-up",
+      src: "/images/services/laser-hair-removal.jpg",
+      alt: "Laser hair removal along a man's jawline",
       width: 600,
       height: 400,
     },
   },
 
-  team: {
-    mariyam: {
-      src: null,
-      alt: "Mariyam Rasoli — Owner, His & Her Med Spa",
-      width: 600,
-      height: 800,
-    },
-    christina: {
-      src: null,
-      alt: "Christina Payatakis — Medical Esthetician, His & Her Med Spa",
-      width: 600,
-      height: 800,
-    },
-  },
+  // No team portraits — the practitioners asked not to appear on the
+  // site (privacy / conflict of interest). Team sections are photo-free.
 } as const;
 
 /**
@@ -182,11 +170,8 @@ export const images = {
  * - academyBreak: Full-width divider (1920×600) — tight training close-up, no room visible
  * - contactSide: REAL storefront photo (800×1000 portrait)
  *
- * SERVICES (600×400 each — must match the FEATURED service slugs)
- * - botox, dermal-fillers, iv-vitamin-therapy, prp-therapy, hydrafacial, body-contouring
+ * SERVICES (600×400 each — keys must match the service slugs)
+ * - all 14 services covered
  *
- * TEAM (600×800 each, portrait orientation)
- * - mariyam, christina
- *
- * Total: 13 images needed
+ * TEAM — intentionally none (privacy request from the practitioners)
  */
