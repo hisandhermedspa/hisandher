@@ -51,7 +51,7 @@ export const images = {
   },
 
   academyTraining: {
-    src: null,
+    src: "/images/academy-training.jpg",
     alt: "Student taking notes beside clinical training instruments",
     width: 1536,
     height: 1024,
