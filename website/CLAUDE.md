@@ -1,10 +1,10 @@
-# His & Her Beauty Bar And Academy — Website
+# His & Her Med Spa + Academy — Website
 
 > Single source of truth for all engineering conventions and content architecture.
 
 ## Project Overview
 
-Medical spa and aesthetics academy website for His & Her Beauty Bar And Academy, located in Whitby, Ontario. Serves the GTA and Durham Region.
+Medical spa and aesthetics academy website for His & Her Med Spa + Academy (formerly His & Her Beauty Bar), located in Whitby, Ontario. Serves the GTA and Durham Region. Bookings are handled exclusively on Fresha — every booking CTA links to `business.bookingUrl`; the site itself never takes bookings. Hours and the service menu mirror the Fresha listing (prices intentionally omitted — they live on Fresha).
 
 **Stack:** Next.js 16 (App Router) · TypeScript (strict) · Tailwind CSS 4 · Vercel  
 **Architecture:** Static site with typed data layer — no database, no CMS.

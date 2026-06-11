@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { LinkButton } from "@/components/ui/button";
-import { team } from "@/data";
+import { business, team } from "@/data";
 
 export const metadata: Metadata = {
   title: "Our Team",
   description:
-    "Meet the founders of His & Her Beauty Bar And Academy — experienced holistic health practitioners and medical estheticians in Whitby, Durham Region.",
+    "Meet the team at His & Her Med Spa + Academy — experienced holistic health practitioners and medical estheticians in Whitby, Durham Region.",
 };
 
 export default function TeamPage() {
@@ -142,7 +142,12 @@ export default function TeamPage() {
             consultation — no pressure, just honest advice.
           </p>
           <div className="mt-8">
-            <LinkButton href="/contact" variant="gold" size="xl" rounded="full">
+            <LinkButton
+              href={business.bookingUrl}
+              variant="gold"
+              size="xl"
+              rounded="full"
+            >
               Book a Free Consultation
             </LinkButton>
           </div>

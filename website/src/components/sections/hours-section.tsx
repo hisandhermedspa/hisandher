@@ -1,12 +1,19 @@
 "use client";
 
-import { Clock, MapPin, Phone } from "lucide-react";
+import { useEffect, useState } from "react";
+import { CalendarCheck, MapPin, Phone } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
 import { business, hours, isOpenNow } from "@/data";
 
 export function HoursSection() {
-  const status = isOpenNow();
+  // Computed after mount so the badge reflects the visitor's "now",
+  // not the moment the page was statically generated.
+  const [status, setStatus] = useState<{ open: boolean; message: string } | null>(null);
+
+  useEffect(() => {
+    setStatus(isOpenNow());
+  }, []);
 
   return (
     <Section bg="gold" padding="lg">
@@ -21,14 +28,16 @@ export function HoursSection() {
               Hours & Location
             </h2>
 
-            <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-espresso/10 bg-white/50 px-4 py-1.5">
-              <span
-                className={`h-2 w-2 rounded-full ${status.open ? "bg-green-600" : "bg-red-500"}`}
-              />
-              <span className="text-xs font-medium text-espresso">
-                {status.message}
-              </span>
-            </div>
+            {status && (
+              <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-espresso/10 bg-white/50 px-4 py-1.5">
+                <span
+                  className={`h-2 w-2 rounded-full ${status.open ? "bg-green-600" : "bg-red-500"}`}
+                />
+                <span className="text-xs font-medium text-espresso">
+                  {status.message}
+                </span>
+              </div>
+            )}
 
             <div className="mt-8 space-y-3">
               {hours.map((day) => (
@@ -56,7 +65,8 @@ export function HoursSection() {
                 Get in Touch
               </h3>
               <p className="mt-2 text-sm text-taupe">
-                Ready to book your consultation? We&apos;d love to hear from you.
+                Bookings are online via Fresha. Questions? Call or text —
+                we&apos;d love to hear from you.
               </p>
 
               <div className="mt-8 space-y-6">
@@ -99,19 +109,24 @@ export function HoursSection() {
                   </div>
                 </a>
 
-                <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold">
-                    <Clock className="h-4 w-4" />
+                <a
+                  href={business.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start gap-4 transition-colors"
+                >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold transition-all duration-300 group-hover:bg-gold group-hover:text-white group-hover:shadow-lg group-hover:shadow-gold/20">
+                    <CalendarCheck className="h-4 w-4" />
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-taupe">
-                      Book Via
+                      Book Online
                     </p>
                     <p className="mt-1 font-serif text-lg text-espresso">
-                      Fresha · Text · Call
+                      Fresha — instant confirmation
                     </p>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>

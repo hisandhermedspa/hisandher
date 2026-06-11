@@ -48,7 +48,7 @@ export function Header() {
             His <span className="italic text-gold">&</span> Her
           </span>
           <span className="text-[10px] uppercase tracking-[0.2em] text-taupe">
-            Beauty Bar & Academy
+            Med Spa + Academy
           </span>
         </Link>
 
@@ -75,7 +75,7 @@ export function Header() {
             {business.phone}
           </a>
           <LinkButton
-            href="/contact"
+            href={business.bookingUrl}
             variant="gold"
             size="sm"
             rounded="full"
@@ -120,7 +120,7 @@ export function Header() {
           ))}
           <div className="pb-2 pt-4">
             <LinkButton
-              href="/contact"
+              href={business.bookingUrl}
               variant="gold"
               size="lg"
               className="w-full shimmer-hover"

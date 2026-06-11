@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   Sparkles,
   Target,
@@ -90,10 +91,13 @@ export default function AcademyPage() {
                 {course.description}
               </p>
 
-              <div className="mt-6 flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-gold">
+              <Link
+                href="/contact"
+                className="mt-6 flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-gold transition-colors hover:text-espresso"
+              >
                 Inquire now
                 <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-              </div>
+              </Link>
             </div>
           ))}
         </div>

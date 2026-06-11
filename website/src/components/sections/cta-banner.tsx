@@ -25,7 +25,12 @@ export function CtaBanner() {
             treatment plan designed around your unique goals.
           </p>
           <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-            <LinkButton href="/contact" variant="gold" size="xl" rounded="full">
+            <LinkButton
+              href={business.primaryCta.href}
+              variant="gold"
+              size="xl"
+              rounded="full"
+            >
               {business.primaryCta.label}
             </LinkButton>
             <a

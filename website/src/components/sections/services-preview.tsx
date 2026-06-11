@@ -18,7 +18,7 @@ export function ServicesPreview() {
         <SectionHeader
           eyebrow="Our Services"
           title="Treatments Tailored to You"
-          description="From injectables to body contouring, every treatment is personalized to enhance your natural beauty with precision and care."
+          description="From injectables and IV therapy to body contouring, every treatment is personalized to enhance your natural beauty with precision and care."
         />
       </Reveal>
 

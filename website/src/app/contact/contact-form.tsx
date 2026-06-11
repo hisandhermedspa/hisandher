@@ -133,10 +133,18 @@ export function ContactForm() {
           <option value="consultation">Free Consultation</option>
           <option value="botox">Botox</option>
           <option value="fillers">Dermal Fillers</option>
-          <option value="microneedling">Microneedling</option>
+          <option value="iv-vitamin-therapy">IV & Vitamin Therapy</option>
+          <option value="hydrafacial">HydraFacial</option>
           <option value="prp">PRP Therapy</option>
+          <option value="microneedling">Microneedling</option>
           <option value="facials">Facials</option>
+          <option value="skin-treatments">Advanced Skin Treatments</option>
+          <option value="chemical-peels">Chemical Peels</option>
+          <option value="laser-hair-removal">Laser Hair Removal</option>
+          <option value="hair-restoration">Hair Restoration</option>
           <option value="body-contouring">Body Contouring</option>
+          <option value="waxing">Waxing</option>
+          <option value="massage">Massage Therapy</option>
           <option value="academy">Academy Enrollment</option>
           <option value="other">Other</option>
         </select>

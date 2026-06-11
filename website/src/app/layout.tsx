@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Playfair_Display, DM_Sans } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { business } from "@/data";
+import { business, hours } from "@/data";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -18,11 +19,12 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: `${business.shortName} Beauty Bar & Academy | ${business.address.city} Med Spa`,
-    template: `%s | ${business.shortName} Beauty Bar & Academy`,
+    default: `${business.name} | ${business.address.city}, Durham Region`,
+    template: `%s | ${business.name}`,
   },
-  description: `${business.positioning} Located in ${business.address.city}, serving the ${business.serviceArea}. ${business.tagline}.`,
+  description: `${business.tagline} Med spa & aesthetics academy in ${business.address.city}, ON — serving the ${business.serviceArea}.`,
   keywords: [
     "med spa Whitby",
     "medical spa Durham Region",
@@ -39,9 +41,37 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_CA",
     siteName: business.name,
-    title: `${business.shortName} Beauty Bar & Academy | ${business.tagline}`,
-    description: business.positioning,
   },
+};
+
+// Local-SEO structured data — mirrors the live business facts
+// (address, hours, Fresha booking page).
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HealthAndBeautyBusiness",
+  name: business.name,
+  description: business.positioning,
+  url: siteUrl,
+  image: `${siteUrl}/images/contact-side.jpg`,
+  telephone: business.phone,
+  email: business.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: business.address.street,
+    addressLocality: business.address.city,
+    addressRegion: business.address.province,
+    postalCode: business.address.postalCode,
+    addressCountry: "CA",
+  },
+  areaServed: business.serviceArea,
+  priceRange: "$$",
+  sameAs: [business.bookingUrl],
+  openingHoursSpecification: hours.map((day) => ({
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: day.day,
+    opens: `${String(day.openHour).padStart(2, "0")}:00`,
+    closes: `${String(day.closeHour).padStart(2, "0")}:00`,
+  })),
 };
 
 export default function RootLayout({
@@ -52,6 +82,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
       <body className="flex min-h-dvh flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
         <Header />
         <main className="flex-1 pt-[72px]">{children}</main>
         <Footer />

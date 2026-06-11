@@ -17,9 +17,9 @@ export function TeamPreview() {
     <Section bg="cream" padding="lg">
       <Reveal>
         <SectionHeader
-          eyebrow="Meet the Founders"
+          eyebrow="Meet the Team"
           title="Expert Hands, Genuine Care"
-          description="Led by two passionate owners who believe in honest guidance, personalized treatments, and results that enhance — never alter — your natural beauty."
+          description="Led by passionate practitioners who believe in honest guidance, personalized treatments, and results that enhance — never alter — your natural beauty."
         />
       </Reveal>
 

@@ -1,9 +1,14 @@
+// Bookings happen exclusively on Fresha — every "book" CTA points here.
+const freshaBookingUrl =
+  "https://www.fresha.com/a/his-her-med-spa-academy-whitby-216-brock-street-south-iwclfoa1";
+
 export const business = {
-  name: "His & Her Beauty Bar And Academy",
+  name: "His & Her Med Spa + Academy",
   shortName: "His & Her",
-  tagline: "Your #1 Durham Region Med Spa",
+  // The brand line painted on the storefront windows.
+  tagline: "Elevate Your Confidence. Enhance Your Natural Beauty.",
   positioning:
-    "Advanced aesthetic treatments designed to help you look refreshed, confident, and radiant.",
+    "From IV therapy and injectables to advanced skin and body treatments — personalized aesthetic care that helps you look refreshed, confident, and radiant.",
   phone: "647-222-3605",
   phoneRaw: "6472223605",
   email: "info@hisandherbeautybar.ca",
@@ -11,15 +16,15 @@ export const business = {
     street: "216 Brock St South",
     city: "Whitby",
     province: "ON",
-    postalCode: "",
-    full: "216 Brock St South, Whitby, ON",
+    postalCode: "L1N 4K1",
+    full: "216 Brock St South, Whitby, ON L1N 4K1",
   },
   serviceArea: "GTA & Durham Region",
+  bookingUrl: freshaBookingUrl,
   primaryCta: {
     label: "Book a Free Consultation",
-    href: "/contact",
+    href: freshaBookingUrl,
   },
-  bookingMethods: ["Fresha", "Text or Call"],
 } as const;
 
 export type Business = typeof business;

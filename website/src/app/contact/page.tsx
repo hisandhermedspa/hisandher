@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
-import { Phone, MapPin, Clock, Mail } from "lucide-react";
+import { Phone, MapPin, Clock, Mail, CalendarCheck } from "lucide-react";
 import { Section } from "@/components/ui/section";
+import { LinkButton } from "@/components/ui/button";
+import { ImageSlot } from "@/components/ui/image-slot";
 import { business, hours } from "@/data";
+import { images } from "@/data/images";
 import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Book a free consultation at His & Her Beauty Bar And Academy in Whitby. Call, text, or send us a message — we'd love to hear from you.",
+    "Book online via Fresha, or send His & Her Med Spa + Academy in Whitby a message about treatments or academy enrollment — we'd love to hear from you.",
 };
 
 export default function ContactPage() {
@@ -26,9 +29,20 @@ export default function ContactPage() {
             <span className="italic text-gold-light">Hear From You</span>
           </h1>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-sand/60 md:text-lg">
-            Book a free consultation, ask about our services, or inquire about
-            academy enrollment. We respond to every message.
+            Bookings are handled online through Fresha. For questions about
+            treatments or academy enrollment, send us a message — we respond
+            to every one.
           </p>
+          <div className="mt-8">
+            <LinkButton
+              href={business.bookingUrl}
+              variant="gold"
+              size="lg"
+              rounded="full"
+            >
+              Book on Fresha
+            </LinkButton>
+          </div>
         </div>
       </section>
 
@@ -51,12 +65,38 @@ export default function ContactPage() {
 
           {/* Contact info sidebar */}
           <div className="lg:col-span-2">
-            <div className="rounded-sm bg-cream p-8 md:p-10">
+            <ImageSlot
+              src={images.contactSide.src}
+              alt={images.contactSide.alt}
+              width={images.contactSide.width}
+              height={images.contactSide.height}
+              className="rounded-sm"
+            />
+            <div className="mt-8 rounded-sm bg-cream p-8 md:p-10">
               <h3 className="font-serif text-xl font-light text-espresso">
                 Other Ways to Reach Us
               </h3>
 
               <div className="mt-8 space-y-8">
+                <a
+                  href={business.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start gap-4"
+                >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold transition-colors group-hover:bg-gold group-hover:text-white">
+                    <CalendarCheck className="h-4 w-4" />
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-widest text-taupe">
+                      Book Online
+                    </p>
+                    <p className="mt-1 font-serif text-lg text-espresso">
+                      Fresha — instant confirmation
+                    </p>
+                  </div>
+                </a>
+
                 <a
                   href={`tel:${business.phoneRaw}`}
                   className="group flex items-start gap-4"
@@ -74,8 +114,11 @@ export default function ContactPage() {
                   </div>
                 </a>
 
-                <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold">
+                <a
+                  href={`mailto:${business.email}`}
+                  className="group flex items-start gap-4"
+                >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold transition-colors group-hover:bg-gold group-hover:text-white">
                     <Mail className="h-4 w-4" />
                   </div>
                   <div>
@@ -86,7 +129,7 @@ export default function ContactPage() {
                       {business.email}
                     </p>
                   </div>
-                </div>
+                </a>
 
                 <a
                   href={`https://maps.google.com/?q=${encodeURIComponent(business.address.full)}`}

@@ -18,7 +18,7 @@ export const team: TeamMember[] = [
   },
   {
     name: "Christina Payatakis",
-    title: "Owner",
+    title: "Medical Esthetician",
     credentials: "Holistic Health Practitioner / Medical Esthetician",
     bio: "With a passion for beauty and wellness, I focus on delivering treatments that enhance confidence while maintaining natural results.",
     languages: ["English"],

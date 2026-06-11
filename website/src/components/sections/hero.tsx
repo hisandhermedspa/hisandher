@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { LinkButton } from "@/components/ui/button";
-import { business } from "@/data";
+import { business, services, team } from "@/data";
 import { images } from "@/data/images";
 
 export function Hero() {
@@ -52,11 +52,11 @@ export function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="animate-fade-in-up animation-delay-200 font-serif text-5xl font-light leading-[1.05] text-cream md:text-6xl lg:text-7xl xl:text-8xl">
-            Where Beauty
+          <h1 className="animate-fade-in-up animation-delay-200 font-serif text-4xl font-light leading-[1.1] text-cream md:text-5xl lg:text-6xl xl:text-7xl">
+            Elevate Your Confidence.
             <br />
-            Meets{" "}
-            <span className="italic text-gold-light">Expertise</span>
+            Enhance Your{" "}
+            <span className="italic text-gold-light">Natural Beauty.</span>
           </h1>
 
           {/* Subheadline */}
@@ -66,7 +66,12 @@ export function Hero() {
 
           {/* CTAs */}
           <div className="animate-fade-in-up animation-delay-600 mt-10 flex flex-col gap-4 sm:flex-row">
-            <LinkButton href="/contact" variant="gold" size="xl" rounded="full">
+            <LinkButton
+              href={business.primaryCta.href}
+              variant="gold"
+              size="xl"
+              rounded="full"
+            >
               {business.primaryCta.label}
             </LinkButton>
             <LinkButton
@@ -82,12 +87,12 @@ export function Hero() {
           {/* Trust indicators */}
           <div className="animate-fade-in-up animation-delay-800 mt-16 flex flex-wrap items-center gap-8 border-t border-sand/10 pt-8">
             <div>
-              <p className="font-serif text-3xl font-light text-gold-light">2</p>
-              <p className="text-xs uppercase tracking-widest text-sand/50">Expert Owners</p>
+              <p className="font-serif text-3xl font-light text-gold-light">{team.length}</p>
+              <p className="text-xs uppercase tracking-widest text-sand/50">Expert Practitioners</p>
             </div>
             <div className="h-8 w-px bg-sand/10" />
             <div>
-              <p className="font-serif text-3xl font-light text-gold-light">6+</p>
+              <p className="font-serif text-3xl font-light text-gold-light">{services.length}</p>
               <p className="text-xs uppercase tracking-widest text-sand/50">Treatments</p>
             </div>
             <div className="h-8 w-px bg-sand/10" />

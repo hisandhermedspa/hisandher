@@ -77,12 +77,24 @@ export function LinkButton({
     extra.onClick = onClick;
   }
 
+  const classes = cn(buttonVariants({ variant, size, rounded, className }));
+
+  if (href.startsWith("http")) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={classes}
+        {...extra}
+      >
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <Link
-      href={href}
-      className={cn(buttonVariants({ variant, size, rounded, className }))}
-      {...extra}
-    >
+    <Link href={href} className={classes} {...extra}>
       {children}
     </Link>
   );

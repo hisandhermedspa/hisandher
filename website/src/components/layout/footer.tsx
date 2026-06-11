@@ -15,7 +15,7 @@ export function Footer() {
                 His <span className="italic text-gold-light">&</span> Her
               </span>
               <span className="text-[10px] uppercase tracking-[0.2em] text-sand/60">
-                Beauty Bar & Academy
+                Med Spa + Academy
               </span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-sand/60">
@@ -89,7 +89,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3 text-sm text-sand/60">
                 <Clock className="mt-0.5 h-4 w-4 shrink-0 text-gold-light" />
-                <span>Mon–Fri 10–8 · Sat 11–6 · Sun 11–4</span>
+                <span>Mon–Wed 11–6 · Thu–Fri 11–8 · Sat–Sun 11–4</span>
               </li>
             </ul>
           </div>

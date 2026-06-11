@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { LinkButton } from "@/components/ui/button";
-import { services, categoryLabels, getServicesByCategory } from "@/data";
+import { business, services, categoryLabels, getServicesByCategory } from "@/data";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -92,7 +92,12 @@ export default function ServicesPage() {
             together.
           </p>
           <div className="mt-8">
-            <LinkButton href="/contact" variant="gold" size="xl" rounded="full">
+            <LinkButton
+              href={business.bookingUrl}
+              variant="gold"
+              size="xl"
+              rounded="full"
+            >
               Book a Free Consultation
               <ArrowRight className="h-4 w-4" />
             </LinkButton>
