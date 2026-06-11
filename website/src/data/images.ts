@@ -50,6 +50,14 @@ export const images = {
     placeholder: "gradient" as const,
   },
 
+  academyTraining: {
+    src: null,
+    alt: "Student taking notes beside clinical training instruments",
+    width: 1536,
+    height: 1024,
+    placeholder: "gradient" as const,
+  },
+
   contactSide: {
     src: "/images/contact-side.jpg",
     alt: "Storefront of His & Her Med Spa on Brock Street South, Whitby",
@@ -92,6 +100,54 @@ export const images = {
     "body-contouring": {
       src: "/images/services/body-contouring.jpg",
       alt: "Non-invasive body contouring treatment close-up",
+      width: 600,
+      height: 400,
+    },
+    microneedling: {
+      src: null,
+      alt: "Microneedling pen device with serums",
+      width: 600,
+      height: 400,
+    },
+    facials: {
+      src: null,
+      alt: "Medical-grade facial treatment close-up",
+      width: 600,
+      height: 400,
+    },
+    "skin-treatments": {
+      src: null,
+      alt: "Advanced skin treatment serum application close-up",
+      width: 600,
+      height: 400,
+    },
+    "chemical-peels": {
+      src: null,
+      alt: "Chemical peel application close-up",
+      width: 600,
+      height: 400,
+    },
+    "hair-restoration": {
+      src: null,
+      alt: "Scalp treatment for hair restoration close-up",
+      width: 600,
+      height: 400,
+    },
+    massage: {
+      src: null,
+      alt: "Relaxation massage close-up",
+      width: 600,
+      height: 400,
+    },
+    waxing: {
+      src: null,
+      alt: "Professional waxing treatment close-up",
+      width: 600,
+      height: 400,
+    },
+    "laser-hair-removal": {
+      src: null,
+      alt: "Laser hair removal device treatment close-up",
       width: 600,
       height: 400,
     },

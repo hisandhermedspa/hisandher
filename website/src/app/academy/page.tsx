@@ -13,7 +13,9 @@ import {
 } from "lucide-react";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { LinkButton } from "@/components/ui/button";
+import { ImageBreak } from "@/components/sections/image-break";
 import { academy, business } from "@/data";
+import { images } from "@/data/images";
 
 export const metadata: Metadata = {
   title: "Academy",
@@ -102,6 +104,12 @@ export default function AcademyPage() {
           ))}
         </div>
       </Section>
+
+      <ImageBreak
+        src={images.academyTraining.src}
+        alt={images.academyTraining.alt}
+        quote="Every expert was once a beginner with the right teacher"
+      />
 
       {/* Why train with us */}
       <Section bg="cream" padding="lg">

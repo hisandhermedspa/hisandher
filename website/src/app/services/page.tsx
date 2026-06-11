@@ -74,7 +74,7 @@ export default function ServicesPage() {
               {categoryServices.map((service) => {
                 const img = getServiceImage(service.slug);
 
-                if (img?.src) {
+                if (img?.src && service.featured) {
                   return (
                     <div
                       key={service.slug}
@@ -110,19 +110,30 @@ export default function ServicesPage() {
                   <div
                     key={service.slug}
                     id={service.slug}
-                    className="group rounded-sm border border-sand/20 bg-white p-8 transition-all duration-500 hover:border-gold/30 hover:shadow-xl hover:shadow-espresso/5 target:border-gold target:shadow-xl target:shadow-gold/15 scroll-mt-24"
+                    className="group overflow-hidden rounded-sm border border-sand/20 bg-white transition-all duration-500 hover:border-gold/30 hover:shadow-xl hover:shadow-espresso/5 target:border-gold target:shadow-xl target:shadow-gold/15 scroll-mt-24"
                   >
-                    <div className="mb-4 h-px w-8 bg-gold transition-all duration-500 group-hover:w-12" />
-                    <h3 className="font-serif text-2xl font-light text-espresso">
-                      {service.name}
-                    </h3>
-                    <p className="mt-1 text-xs uppercase tracking-[0.15em] text-gold">
-                      {service.tagline}
-                    </p>
-                    <p className="mt-4 text-sm leading-relaxed text-taupe">
-                      {service.description}
-                    </p>
-                    <BookLink />
+                    {img?.src && (
+                      <ImageSlot
+                        src={img.src}
+                        alt={img.alt}
+                        width={img.width}
+                        height={img.height}
+                        className="aspect-[3/2] w-full"
+                      />
+                    )}
+                    <div className="p-8">
+                      <div className="mb-4 h-px w-8 bg-gold transition-all duration-500 group-hover:w-12" />
+                      <h3 className="font-serif text-2xl font-light text-espresso">
+                        {service.name}
+                      </h3>
+                      <p className="mt-1 text-xs uppercase tracking-[0.15em] text-gold">
+                        {service.tagline}
+                      </p>
+                      <p className="mt-4 text-sm leading-relaxed text-taupe">
+                        {service.description}
+                      </p>
+                      <BookLink />
+                    </div>
                   </div>
                 );
               })}
