@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, MapPin, Clock } from "lucide-react";
+import { Phone, MapPin, Clock, CalendarCheck } from "lucide-react";
 import { business, navigation, hours } from "@/data";
 
 export function Footer() {
@@ -63,6 +63,17 @@ export function Footer() {
               Contact
             </h3>
             <ul className="space-y-4">
+              <li>
+                <a
+                  href={business.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 text-sm font-medium text-gold-light transition-colors hover:text-cream"
+                >
+                  <CalendarCheck className="mt-0.5 h-4 w-4 shrink-0 text-gold-light" />
+                  Book on Fresha
+                </a>
+              </li>
               <li>
                 <a
                   href={`tel:${business.phoneRaw}`}

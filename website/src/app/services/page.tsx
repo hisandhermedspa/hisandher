@@ -1,14 +1,35 @@
 import type { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CalendarCheck } from "lucide-react";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { LinkButton } from "@/components/ui/button";
+import { ImageSlot } from "@/components/ui/image-slot";
 import { business, services, categoryLabels, getServicesByCategory } from "@/data";
+import { images } from "@/data/images";
 
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Explore our full range of medical spa treatments — Botox, dermal fillers, microneedling, PRP therapy, facials, and body contouring in Whitby, Durham Region.",
+    "Explore 14 med spa treatments in Whitby — Botox & Dysport, dermal fillers, IV vitamin therapy, PRP, HydraFacial, body contouring, laser hair removal, and more.",
 };
+
+function getServiceImage(slug: string) {
+  return images.services[slug as keyof typeof images.services] ?? null;
+}
+
+function BookLink() {
+  return (
+    <a
+      href={business.bookingUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mt-6 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-gold transition-all duration-300 hover:gap-3 hover:text-espresso"
+    >
+      <CalendarCheck className="h-4 w-4" />
+      Book on Fresha
+      <ArrowRight className="h-3.5 w-3.5" />
+    </a>
+  );
+}
 
 export default function ServicesPage() {
   const grouped = getServicesByCategory();
@@ -50,32 +71,61 @@ export default function ServicesPage() {
             />
 
             <div className="grid gap-6 md:grid-cols-2">
-              {categoryServices.map((service) => (
-                <div
-                  key={service.slug}
-                  id={service.slug}
-                  className="group rounded-sm border border-sand/20 bg-white p-8 transition-all duration-500 hover:border-gold/30 hover:shadow-xl hover:shadow-espresso/5 scroll-mt-24"
-                >
-                  <div className="mb-4 h-px w-8 bg-gold transition-all duration-500 group-hover:w-12" />
-                  <h3 className="font-serif text-2xl font-light text-espresso">
-                    {service.name}
-                  </h3>
-                  <p className="mt-1 text-xs uppercase tracking-[0.15em] text-gold">
-                    {service.tagline}
-                  </p>
-                  <p className="mt-4 text-sm leading-relaxed text-taupe">
-                    {service.description}
-                  </p>
-                  {(service.startingPrice ?? service.duration) && (
-                    <div className="mt-4 flex gap-4 text-xs uppercase tracking-widest text-mocha">
-                      {service.startingPrice && (
-                        <span>From {service.startingPrice}</span>
-                      )}
-                      {service.duration && <span>{service.duration}</span>}
+              {categoryServices.map((service) => {
+                const img = getServiceImage(service.slug);
+
+                if (img?.src) {
+                  return (
+                    <div
+                      key={service.slug}
+                      id={service.slug}
+                      className="group grid overflow-hidden rounded-sm border border-sand/20 bg-white transition-all duration-500 hover:border-gold/30 hover:shadow-xl hover:shadow-espresso/5 target:border-gold target:shadow-xl target:shadow-gold/15 scroll-mt-24 md:col-span-2 md:grid-cols-2"
+                    >
+                      <ImageSlot
+                        src={img.src}
+                        alt={img.alt}
+                        width={img.width}
+                        height={img.height}
+                        fill
+                        className="min-h-[240px] md:min-h-[320px]"
+                      />
+                      <div className="p-8 md:p-10">
+                        <div className="mb-4 h-px w-8 bg-gold transition-all duration-500 group-hover:w-12" />
+                        <h3 className="font-serif text-2xl font-light text-espresso md:text-3xl">
+                          {service.name}
+                        </h3>
+                        <p className="mt-1 text-xs uppercase tracking-[0.15em] text-gold">
+                          {service.tagline}
+                        </p>
+                        <p className="mt-4 text-sm leading-relaxed text-taupe">
+                          {service.description}
+                        </p>
+                        <BookLink />
+                      </div>
                     </div>
-                  )}
-                </div>
-              ))}
+                  );
+                }
+
+                return (
+                  <div
+                    key={service.slug}
+                    id={service.slug}
+                    className="group rounded-sm border border-sand/20 bg-white p-8 transition-all duration-500 hover:border-gold/30 hover:shadow-xl hover:shadow-espresso/5 target:border-gold target:shadow-xl target:shadow-gold/15 scroll-mt-24"
+                  >
+                    <div className="mb-4 h-px w-8 bg-gold transition-all duration-500 group-hover:w-12" />
+                    <h3 className="font-serif text-2xl font-light text-espresso">
+                      {service.name}
+                    </h3>
+                    <p className="mt-1 text-xs uppercase tracking-[0.15em] text-gold">
+                      {service.tagline}
+                    </p>
+                    <p className="mt-4 text-sm leading-relaxed text-taupe">
+                      {service.description}
+                    </p>
+                    <BookLink />
+                  </div>
+                );
+              })}
             </div>
           </Section>
         )
