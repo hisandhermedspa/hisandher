@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Link from "next/link";
 import { Send, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -196,6 +197,14 @@ export function ContactForm() {
           </>
         )}
       </Button>
+
+      <p className="text-xs leading-relaxed text-sand">
+        By submitting this form you agree to our{" "}
+        <Link href="/privacy" className="text-gold underline hover:text-espresso">
+          Privacy Policy
+        </Link>
+        . We&apos;ll only use your details to respond to you.
+      </p>
     </form>
   );
 }

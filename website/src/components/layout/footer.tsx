@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Phone, MapPin, Clock, CalendarCheck } from "lucide-react";
 import { business, navigation, hours } from "@/data";
+import { legalDocs } from "@/data/legal";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -106,8 +107,19 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-sand/10 py-8 text-center text-xs text-sand/40">
+        <div className="flex flex-col items-center gap-4 border-t border-sand/10 py-8 text-xs text-sand/40 md:flex-row md:justify-between">
           <p>&copy; {currentYear} {business.name}. All rights reserved.</p>
+          <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            {legalDocs.map((doc) => (
+              <Link
+                key={doc.slug}
+                href={`/${doc.slug}`}
+                className="transition-colors hover:text-cream"
+              >
+                {doc.title}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
     </footer>
