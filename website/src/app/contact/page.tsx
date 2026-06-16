@@ -8,6 +8,7 @@ import { images } from "@/data/images";
 import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/contact" },
   title: "Contact",
   description:
     "Book online via Fresha, or send His & Her Med Spa + Academy in Whitby a message about treatments or academy enrollment — we'd love to hear from you.",

@@ -3,6 +3,7 @@ import { LegalPage } from "@/components/legal/legal-page";
 import { termsOfUse } from "@/data/legal";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/terms" },
   title: "Terms of Use",
   description:
     "The terms governing use of the His & Her Med Spa + Academy website, including our medical disclaimer.",

@@ -7,6 +7,7 @@ import { business, services, categoryLabels, getServicesByCategory } from "@/dat
 import { images } from "@/data/images";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/services" },
   title: "Services",
   description:
     "Explore 14 med spa treatments in Whitby — Botox & Dysport, dermal fillers, IV vitamin therapy, PRP, HydraFacial, body contouring, laser hair removal, and more.",

@@ -18,6 +18,7 @@ import { academy, business } from "@/data";
 import { images } from "@/data/images";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/academy" },
   title: "Academy",
   description:
     "Hands-on aesthetics certification courses — body contouring, microneedling, Botox, fillers, facials, and PRP. Train with experienced practitioners in Durham Region.",

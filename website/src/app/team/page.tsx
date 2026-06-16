@@ -4,6 +4,7 @@ import { LinkButton } from "@/components/ui/button";
 import { business, team } from "@/data";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/team" },
   title: "Our Team",
   description:
     "Meet the team at His & Her Med Spa + Academy — experienced holistic health practitioners and medical estheticians in Whitby, Durham Region.",
