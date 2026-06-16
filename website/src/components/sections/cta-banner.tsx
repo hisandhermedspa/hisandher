@@ -21,7 +21,7 @@ export function CtaBanner() {
             <span className="italic text-gold-light">Your Best?</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-sand/60">
-            Book a free consultation with our team. We&apos;ll create a personalized
+            Book an appointment with our team. We&apos;ll create a personalized
             treatment plan designed around your unique goals.
           </p>
           <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">

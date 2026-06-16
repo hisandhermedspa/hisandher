@@ -22,7 +22,7 @@ export const business = {
   serviceArea: "GTA & Durham Region",
   bookingUrl: freshaBookingUrl,
   primaryCta: {
-    label: "Book a Free Consultation",
+    label: "Book an Appointment",
     href: freshaBookingUrl,
   },
 } as const;

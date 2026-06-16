@@ -139,7 +139,7 @@ export function ContactForm() {
           I&apos;m Interested In
         </label>
         <select id="interest" name="interest" className={inputClasses}>
-          <option value="consultation">Free Consultation</option>
+          <option value="consultation">General Consultation</option>
           <option value="botox">Botox</option>
           <option value="fillers">Dermal Fillers</option>
           <option value="iv-vitamin-therapy">IV & Vitamin Therapy</option>

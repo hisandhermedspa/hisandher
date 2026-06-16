@@ -149,7 +149,7 @@ export default function ServicesPage() {
             Not Sure Which Treatment Is Right for You?
           </h2>
           <p className="mt-4 text-base text-sand/60">
-            Book a free consultation and we&apos;ll create a personalized plan
+            Book an appointment and we&apos;ll create a personalized plan
             together.
           </p>
           <div className="mt-8">
@@ -159,7 +159,7 @@ export default function ServicesPage() {
               size="xl"
               rounded="full"
             >
-              Book a Free Consultation
+              Book an Appointment
               <ArrowRight className="h-4 w-4" />
             </LinkButton>
           </div>

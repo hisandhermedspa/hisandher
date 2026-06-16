@@ -126,7 +126,7 @@ export function Header() {
               className="w-full shimmer-hover"
               onClick={() => setMobileOpen(false)}
             >
-              Book a Free Consultation
+              Book an Appointment
             </LinkButton>
           </div>
         </div>

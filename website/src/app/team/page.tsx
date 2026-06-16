@@ -126,8 +126,8 @@ export default function TeamPage() {
             Meet Us in Person
           </h2>
           <p className="mt-4 text-base text-sand/60">
-            The best way to experience our care is to visit. Book a free
-            consultation — no pressure, just honest advice.
+            The best way to experience our care is to visit. Book an
+            appointment — no pressure, just honest advice.
           </p>
           <div className="mt-8">
             <LinkButton
@@ -136,7 +136,7 @@ export default function TeamPage() {
               size="xl"
               rounded="full"
             >
-              Book a Free Consultation
+              Book an Appointment
             </LinkButton>
           </div>
         </div>
