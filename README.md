@@ -33,4 +33,5 @@ npm run dev
 - Christina Payatakis — Medical Esthetician (listed as "Christine" on Fresha)
 
 No team photos on the site — both asked not to appear (privacy / conflict of interest).
-Contact email: hisnandhermedspa@gmail.com (VERIFY the spelling — "hisn..." with an n — before launch).
+Contact email: hisandhermedspa@gmail.com
+Domain: hisandhermedspa.ca (set as NEXT_PUBLIC_SITE_URL in netlify.toml).

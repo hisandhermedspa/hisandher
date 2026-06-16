@@ -3,5 +3,10 @@
   command = "npm run build"
   publish = ".next"
 
+[build.environment]
+  # Canonical site URL — baked into metadata, sitemap, robots, OG tags,
+  # and LocalBusiness structured data at build time.
+  NEXT_PUBLIC_SITE_URL = "https://hisandhermedspa.ca"
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"
