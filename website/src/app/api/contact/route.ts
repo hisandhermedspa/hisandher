@@ -9,7 +9,9 @@ const contactSchema = z.object({
   interest: z.string().optional(),
   message: z.string().max(5000).optional(),
   // Honeypot — real users never fill this hidden field; bots do.
-  company: z.string().max(0).optional(),
+  // Accept any value here so a filled honeypot passes validation and
+  // is then silently dropped below (a 400 would leak the trap).
+  company: z.string().max(200).optional(),
 });
 
 type ContactData = z.infer<typeof contactSchema>;
