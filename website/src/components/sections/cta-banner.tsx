@@ -1,5 +1,3 @@
-"use client";
-
 import { LinkButton } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
 import { business } from "@/data";

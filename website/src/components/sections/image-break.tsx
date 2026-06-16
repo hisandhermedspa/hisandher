@@ -1,5 +1,3 @@
-"use client";
-
 import { FullBleedImage } from "@/components/ui/image-slot";
 import { Reveal } from "@/components/ui/reveal";
 

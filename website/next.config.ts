@@ -6,6 +6,12 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
+  images: {
+    // Serve AVIF (smallest) with WebP fallback for every photo.
+    formats: ["image/avif", "image/webp"],
+    // Keep optimized variants cached on the CDN for 30 days.
+    minimumCacheTTL: 2592000,
+  },
 };
 
 export default nextConfig;

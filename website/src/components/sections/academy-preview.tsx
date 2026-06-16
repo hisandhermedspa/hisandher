@@ -1,5 +1,3 @@
-"use client";
-
 import { Sparkles, Target, Syringe, Droplets, Flower2, HeartPulse } from "lucide-react";
 import { Section, SectionHeader } from "@/components/ui/section";
 import { LinkButton } from "@/components/ui/button";
