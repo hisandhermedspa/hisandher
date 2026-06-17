@@ -81,7 +81,9 @@ const localBusinessJsonLd = {
     },
     areaServed: business.serviceArea,
     priceRange: "$$",
-    sameAs: [business.bookingUrl, reviewsSummary.url],
+    sameAs: [business.bookingUrl, reviewsSummary.url, loc.instagram, loc.facebook].filter(
+      Boolean
+    ),
     // Both locations keep the same hours.
     openingHoursSpecification: hours.map((day) => ({
       "@type": "OpeningHoursSpecification",

@@ -3,6 +3,34 @@ import { Phone, MapPin, CalendarCheck } from "lucide-react";
 import { business, navigation, hours } from "@/data";
 import { legalDocs } from "@/data/legal";
 
+// Lucide dropped its brand glyphs, so these are inline.
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  );
+}
+
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z" />
+    </svg>
+  );
+}
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -98,6 +126,32 @@ export function Footer() {
                     <Phone className="h-4 w-4 shrink-0 text-gold-light" />
                     {loc.phone}
                   </a>
+                  {(loc.instagram || loc.facebook) && (
+                    <div className="mt-3 flex gap-3">
+                      {loc.instagram && (
+                        <a
+                          href={loc.instagram}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${loc.name} on Instagram`}
+                          className="text-gold-light transition-colors hover:text-cream"
+                        >
+                          <InstagramIcon className="h-4 w-4" />
+                        </a>
+                      )}
+                      {loc.facebook && (
+                        <a
+                          href={loc.facebook}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${loc.name} on Facebook`}
+                          className="text-gold-light transition-colors hover:text-cream"
+                        >
+                          <FacebookIcon className="h-4 w-4" />
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>

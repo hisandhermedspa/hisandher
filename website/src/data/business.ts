@@ -11,6 +11,8 @@ export interface Location {
   full: string;
   phone: string;
   phoneRaw: string;
+  instagram?: string;
+  facebook?: string;
 }
 
 // Whitby is the primary (booking) location.
@@ -23,6 +25,8 @@ const whitby: Location = {
   full: "216 Brock St South, Whitby, ON L1N 4K1",
   phone: "647-222-3605",
   phoneRaw: "6472223605",
+  instagram: "https://www.instagram.com/hisandhermedspa",
+  facebook: "https://www.facebook.com/share/1GpRa2bL5y/",
 };
 
 const mississauga: Location = {
@@ -34,6 +38,8 @@ const mississauga: Location = {
   full: "3045 Hurontario St, Mississauga, ON L5A 2G9",
   phone: "647-513-5749",
   phoneRaw: "6475135749",
+  instagram: "https://www.instagram.com/bossbeautybaracademy",
+  facebook: "https://www.facebook.com/share/1E3qYKC3KA/",
 };
 
 // Two GTA locations. Whitby is listed first (primary).
