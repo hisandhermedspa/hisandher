@@ -9,8 +9,8 @@ export const business = {
   tagline: "Elevate Your Confidence. Enhance Your Natural Beauty.",
   positioning:
     "From IV therapy and injectables to advanced skin and body treatments — personalized aesthetic care that helps you look refreshed, confident, and radiant.",
-  phone: "647-222-3605",
-  phoneRaw: "6472223605",
+  phone: "647-513-5749",
+  phoneRaw: "6475135749",
   email: "hisandhermedspa@gmail.com",
   address: {
     street: "216 Brock St South",
