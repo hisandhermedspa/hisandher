@@ -26,7 +26,7 @@ const whitby: Location = {
   phone: "647-222-3605",
   phoneRaw: "6472223605",
   instagram: "https://www.instagram.com/hisandhermedspa",
-  facebook: "https://www.facebook.com/share/1GpRa2bL5y/",
+  facebook: "https://www.facebook.com/share/1E3qYKC3KA/",
 };
 
 const mississauga: Location = {
@@ -39,7 +39,7 @@ const mississauga: Location = {
   phone: "647-513-5749",
   phoneRaw: "6475135749",
   instagram: "https://www.instagram.com/bossbeautybaracademy",
-  facebook: "https://www.facebook.com/share/1E3qYKC3KA/",
+  facebook: "https://www.facebook.com/share/1GpRa2bL5y/",
 };
 
 // Two GTA locations. Whitby is listed first (primary).
