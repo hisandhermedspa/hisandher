@@ -19,14 +19,3 @@
   for = "/images/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
-
-# ───────────────────────────────────────────────────────────────
-# SITE PAUSED — every route serves the "launching soon" holding page
-# with a 503 so search engines don't index it yet.
-# TO GO LIVE: delete this whole block (down to the end marker) and push.
-[[redirects]]
-  from = "/*"
-  to = "/maintenance.html"
-  status = 503
-  force = true
-# ── end pause block ────────────────────────────────────────────

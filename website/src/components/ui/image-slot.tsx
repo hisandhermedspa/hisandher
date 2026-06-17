@@ -72,7 +72,7 @@ export function ImageSlot({
         className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 25% 25%, rgba(184,146,106,0.3) 1px, transparent 1px)",
+            "radial-gradient(circle at 25% 25%, var(--pattern-gold-line) 1px, transparent 1px)",
           backgroundSize: "24px 24px",
         }}
       />
@@ -135,7 +135,7 @@ export function FullBleedImage({
             className="absolute inset-0 opacity-[0.03]"
             style={{
               backgroundImage:
-                "linear-gradient(rgba(184,146,106,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(184,146,106,0.3) 1px, transparent 1px)",
+                "linear-gradient(var(--pattern-gold-line) 1px, transparent 1px), linear-gradient(90deg, var(--pattern-gold-line) 1px, transparent 1px)",
               backgroundSize: "80px 80px",
             }}
           />

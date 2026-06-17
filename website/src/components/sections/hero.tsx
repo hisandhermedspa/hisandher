@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { LinkButton } from "@/components/ui/button";
-import { business, services, team } from "@/data";
+import { business, reviewsSummary } from "@/data";
 import { images } from "@/data/images";
 
 export function Hero() {
@@ -36,7 +36,7 @@ export function Hero() {
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(184,146,106,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(184,146,106,0.3) 1px, transparent 1px)",
+            "linear-gradient(var(--pattern-gold-line) 1px, transparent 1px), linear-gradient(90deg, var(--pattern-gold-line) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
@@ -87,18 +87,20 @@ export function Hero() {
           {/* Trust indicators */}
           <div className="animate-fade-in-up animation-delay-800 mt-16 flex flex-wrap items-center gap-8 border-t border-sand/10 pt-8">
             <div>
-              <p className="font-serif text-3xl font-light text-gold-light">{team.length}</p>
-              <p className="text-xs uppercase tracking-widest text-sand/50">Expert Practitioners</p>
+              <p className="font-serif text-3xl font-light text-gold-light">
+                {reviewsSummary.rating}<span className="text-xl">★</span>
+              </p>
+              <p className="text-xs uppercase tracking-widest text-sand/50">Google Rating</p>
             </div>
             <div className="h-8 w-px bg-sand/10" />
             <div>
-              <p className="font-serif text-3xl font-light text-gold-light">{services.length}</p>
-              <p className="text-xs uppercase tracking-widest text-sand/50">Treatments</p>
+              <p className="font-serif text-3xl font-light text-gold-light">★★★★★</p>
+              <p className="text-xs uppercase tracking-widest text-sand/50">Client Reviews</p>
             </div>
             <div className="h-8 w-px bg-sand/10" />
             <div>
-              <p className="font-serif text-3xl font-light text-gold-light">7</p>
-              <p className="text-xs uppercase tracking-widest text-sand/50">Days a Week</p>
+              <p className="font-serif text-3xl font-light text-gold-light">{business.locations.length}</p>
+              <p className="text-xs uppercase tracking-widest text-sand/50">GTA Locations</p>
             </div>
           </div>
         </div>

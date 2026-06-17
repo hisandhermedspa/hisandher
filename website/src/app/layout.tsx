@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, DM_Sans } from "next/font/google";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { business, hours } from "@/data";
+import { business, hours, reviewsSummary } from "@/data";
 import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
@@ -57,33 +57,38 @@ export const metadata: Metadata = {
   },
 };
 
-// Local-SEO structured data — mirrors the live business facts
-// (address, hours, Fresha booking page).
+// Local-SEO structured data — one node per location, both sharing the
+// same hours. (Self-serving aggregate ratings aren't shown by Google for
+// LocalBusiness, so the rating lives only in the on-page testimonials.)
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
-  "@type": "HealthAndBeautyBusiness",
-  name: business.name,
-  description: business.positioning,
-  url: siteUrl,
-  image: `${siteUrl}/images/contact-side.jpg`,
-  telephone: business.phone,
-  email: business.email,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: business.address.street,
-    addressLocality: business.address.city,
-    addressRegion: business.address.province,
-    postalCode: business.address.postalCode,
-    addressCountry: "CA",
-  },
-  areaServed: business.serviceArea,
-  priceRange: "$$",
-  sameAs: [business.bookingUrl],
-  openingHoursSpecification: hours.map((day) => ({
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: day.day,
-    opens: `${String(day.openHour).padStart(2, "0")}:00`,
-    closes: `${String(day.closeHour).padStart(2, "0")}:00`,
+  "@graph": business.locations.map((loc) => ({
+    "@type": "HealthAndBeautyBusiness",
+    "@id": `${siteUrl}/#${loc.name.toLowerCase()}`,
+    name: `${business.name} — ${loc.name}`,
+    description: business.positioning,
+    url: siteUrl,
+    image: `${siteUrl}/images/contact-side.jpg`,
+    telephone: loc.phone,
+    email: business.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: loc.street,
+      addressLocality: loc.city,
+      addressRegion: loc.province,
+      postalCode: loc.postalCode,
+      addressCountry: "CA",
+    },
+    areaServed: business.serviceArea,
+    priceRange: "$$",
+    sameAs: [business.bookingUrl, reviewsSummary.url],
+    // Both locations keep the same hours.
+    openingHoursSpecification: hours.map((day) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: day.day,
+      opens: `${String(day.openHour).padStart(2, "0")}:00`,
+      closes: `${String(day.closeHour).padStart(2, "0")}:00`,
+    })),
   })),
 };
 

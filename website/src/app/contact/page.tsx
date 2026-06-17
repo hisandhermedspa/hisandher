@@ -66,13 +66,26 @@ export default function ContactPage() {
 
           {/* Contact info sidebar */}
           <div className="lg:col-span-2">
-            <ImageSlot
-              src={images.contactSide.src}
-              alt={images.contactSide.alt}
-              width={images.contactSide.width}
-              height={images.contactSide.height}
-              className="rounded-sm"
-            />
+            <div className="space-y-4">
+              {[
+                { img: images.contactSide, label: "Whitby" },
+                { img: images.storefrontMississauga, label: "Mississauga" },
+              ].map(({ img, label }) => (
+                <figure key={label}>
+                  <ImageSlot
+                    src={img.src}
+                    alt={img.alt}
+                    width={img.width}
+                    height={img.height}
+                    fill
+                    className="aspect-[16/9] rounded-sm"
+                  />
+                  <figcaption className="mt-2 text-xs uppercase tracking-[0.2em] text-taupe">
+                    {label}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
             <div className="mt-8 rounded-sm bg-cream p-8 md:p-10">
               <h3 className="font-serif text-xl font-light text-espresso">
                 Other Ways to Reach Us
@@ -99,23 +112,6 @@ export default function ContactPage() {
                 </a>
 
                 <a
-                  href={`tel:${business.phoneRaw}`}
-                  className="group flex items-start gap-4"
-                >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold transition-colors group-hover:bg-gold group-hover:text-white">
-                    <Phone className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-taupe">
-                      Call or Text
-                    </p>
-                    <p className="mt-1 font-serif text-lg text-espresso">
-                      {business.phone}
-                    </p>
-                  </div>
-                </a>
-
-                <a
                   href={`mailto:${business.email}`}
                   className="group flex items-start gap-4"
                 >
@@ -132,27 +128,38 @@ export default function ContactPage() {
                   </div>
                 </a>
 
-                <a
-                  href={`https://maps.google.com/?q=${encodeURIComponent(business.address.full)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-start gap-4"
-                >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold transition-colors group-hover:bg-gold group-hover:text-white">
-                    <MapPin className="h-4 w-4" />
+                {business.locations.map((loc) => (
+                  <div key={loc.name} className="flex items-start gap-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold">
+                      <MapPin className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <p className="text-xs uppercase tracking-widest text-taupe">
+                        {loc.name}
+                      </p>
+                      <a
+                        href={`https://maps.google.com/?q=${encodeURIComponent(loc.full)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group block"
+                      >
+                        <p className="mt-1 font-serif text-lg text-espresso transition-colors group-hover:text-gold">
+                          {loc.street}
+                        </p>
+                        <p className="text-sm text-taupe">
+                          {loc.city}, {loc.province}
+                        </p>
+                      </a>
+                      <a
+                        href={`tel:${loc.phoneRaw}`}
+                        className="mt-2 inline-flex items-center gap-2 text-sm text-gold transition-colors hover:text-espresso"
+                      >
+                        <Phone className="h-3.5 w-3.5" />
+                        {loc.phone}
+                      </a>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-taupe">
-                      Visit Us
-                    </p>
-                    <p className="mt-1 font-serif text-lg text-espresso">
-                      {business.address.street}
-                    </p>
-                    <p className="text-sm text-taupe">
-                      {business.address.city}, {business.address.province}
-                    </p>
-                  </div>
-                </a>
+                ))}
 
                 <div className="flex items-start gap-4">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold">

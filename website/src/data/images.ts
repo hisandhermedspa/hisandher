@@ -66,6 +66,14 @@ export const images = {
     placeholder: "gradient" as const,
   },
 
+  storefrontMississauga: {
+    src: "/images/storefront-mississauga.jpg",
+    alt: "His & Her Med Spa storefront on Hurontario Street, Mississauga",
+    width: 1234,
+    height: 669,
+    placeholder: "gradient" as const,
+  },
+
   services: {
     botox: {
       src: "/images/services/botox.jpg",

@@ -1,5 +1,8 @@
-export { business } from "./business";
-export type { Business } from "./business";
+export { business, locations } from "./business";
+export type { Business, Location } from "./business";
+
+export { reviews, reviewsSummary } from "./reviews";
+export type { Review } from "./reviews";
 
 export { hours, isOpenNow } from "./hours";
 export type { DayHours } from "./hours";

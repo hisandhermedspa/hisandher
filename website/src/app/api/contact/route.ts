@@ -24,6 +24,15 @@ type ContactData = z.infer<typeof contactSchema>;
 const FROM_EMAIL =
   process.env.CONTACT_FROM_EMAIL ?? "His & Her Med Spa <onboarding@resend.dev>";
 
+// Email clients strip CSS variables, so the notification HTML needs
+// literal hex. These mirror the site palette tokens (globals.css) —
+// keep them in sync if the brand colors change.
+const EMAIL_COLORS = {
+  ink: "#0B0B0C", // --color-espresso
+  gold: "#C0A062", // --color-gold
+  muted: "#6A6A70", // --color-taupe
+} as const;
+
 function escapeHtml(value: string): string {
   return value
     .replace(/&/g, "&amp;")
@@ -42,8 +51,8 @@ function buildEmail(data: ContactData) {
   ];
 
   const html = `
-    <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;color:#1A110A;">
-      <h2 style="font-weight:300;border-bottom:2px solid #B8926A;padding-bottom:8px;">
+    <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;color:${EMAIL_COLORS.ink};">
+      <h2 style="font-weight:300;border-bottom:2px solid ${EMAIL_COLORS.gold};padding-bottom:8px;">
         New website inquiry
       </h2>
       <table style="width:100%;border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px;">
@@ -51,13 +60,13 @@ function buildEmail(data: ContactData) {
           .map(
             ([label, value]) => `
           <tr>
-            <td style="padding:8px 12px 8px 0;color:#8A7A6E;vertical-align:top;white-space:nowrap;">${label}</td>
+            <td style="padding:8px 12px 8px 0;color:${EMAIL_COLORS.muted};vertical-align:top;white-space:nowrap;">${label}</td>
             <td style="padding:8px 0;">${escapeHtml(value).replace(/\n/g, "<br>")}</td>
           </tr>`
           )
           .join("")}
       </table>
-      <p style="font-family:Arial,sans-serif;font-size:12px;color:#8A7A6E;margin-top:24px;">
+      <p style="font-family:Arial,sans-serif;font-size:12px;color:${EMAIL_COLORS.muted};margin-top:24px;">
         Sent from hisandhermedspa.ca — reply to this email to respond directly to the sender.
       </p>
     </div>`;

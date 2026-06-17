@@ -25,13 +25,16 @@ export function HoursSection() {
               Visit Us
             </span>
             <h2 className="font-serif text-3xl font-light text-espresso md:text-4xl">
-              Hours & Location
+              Hours & Locations
             </h2>
+            <p className="mt-2 text-sm text-espresso/70">
+              Same hours at both our Whitby &amp; Mississauga locations.
+            </p>
 
             {status && (
               <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-espresso/10 bg-white/50 px-4 py-1.5">
                 <span
-                  className={`h-2 w-2 rounded-full ${status.open ? "bg-green-600" : "bg-red-500"}`}
+                  className={`h-2 w-2 rounded-full ${status.open ? "bg-open" : "bg-closed"}`}
                 />
                 <span className="text-xs font-medium text-espresso">
                   {status.message}
@@ -70,44 +73,38 @@ export function HoursSection() {
               </p>
 
               <div className="mt-8 space-y-6">
-                <a
-                  href={`tel:${business.phoneRaw}`}
-                  className="group flex items-start gap-4 transition-colors"
-                >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold transition-all duration-300 group-hover:bg-gold group-hover:text-white group-hover:shadow-lg group-hover:shadow-gold/20">
-                    <Phone className="h-4 w-4" />
+                {business.locations.map((loc) => (
+                  <div key={loc.name} className="flex items-start gap-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold">
+                      <MapPin className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <p className="text-xs uppercase tracking-widest text-taupe">
+                        {loc.name}
+                      </p>
+                      <a
+                        href={`https://maps.google.com/?q=${encodeURIComponent(loc.full)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/loc block"
+                      >
+                        <p className="mt-1 font-serif text-lg text-espresso transition-colors group-hover/loc:text-gold">
+                          {loc.street}
+                        </p>
+                        <p className="text-sm text-taupe">
+                          {loc.city}, {loc.province}
+                        </p>
+                      </a>
+                      <a
+                        href={`tel:${loc.phoneRaw}`}
+                        className="mt-2 inline-flex items-center gap-2 text-sm text-gold transition-colors hover:text-espresso"
+                      >
+                        <Phone className="h-3.5 w-3.5" />
+                        {loc.phone}
+                      </a>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-taupe">
-                      Call or Text
-                    </p>
-                    <p className="mt-1 font-serif text-lg text-espresso">
-                      {business.phone}
-                    </p>
-                  </div>
-                </a>
-
-                <a
-                  href={`https://maps.google.com/?q=${encodeURIComponent(business.address.full)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-start gap-4 transition-colors"
-                >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold transition-all duration-300 group-hover:bg-gold group-hover:text-white group-hover:shadow-lg group-hover:shadow-gold/20">
-                    <MapPin className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-widest text-taupe">
-                      Visit Us
-                    </p>
-                    <p className="mt-1 font-serif text-lg text-espresso">
-                      {business.address.street}
-                    </p>
-                    <p className="text-sm text-taupe">
-                      {business.address.city}, {business.address.province}
-                    </p>
-                  </div>
-                </a>
+                ))}
 
                 <a
                   href={business.bookingUrl}

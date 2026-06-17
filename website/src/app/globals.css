@@ -1,20 +1,27 @@
 @import "tailwindcss";
 
+/* Palette: black · white · silver · gold.
+   Token names are kept (so components don't change); only the values
+   shifted from the old warm cream/espresso scheme to black/white/silver/gold. */
 @theme inline {
-  --color-cream: #FAF7F2;
-  --color-cream-dark: #F0EAE0;
-  --color-espresso: #1A110A;
-  --color-espresso-soft: #3D2E23;
-  --color-mocha: #5C4033;
-  --color-taupe: #8A7A6E;
-  --color-sand: #C4B5A5;
-  --color-gold: #B8926A;
-  --color-gold-light: #D4B896;
-  --color-rose: #C4A18E;
-  --color-rose-light: #E8D5C8;
-  --color-accent: #8A3A2A;
-  --color-accent-dark: #6E2D20;
+  --color-cream: #F5F5F7;       /* off-white main background */
+  --color-cream-dark: #E8E8EC;  /* light silver — subtle bg / borders */
+  --color-espresso: #0B0B0C;    /* near-black — dark sections & primary text */
+  --color-espresso-soft: #1C1C20;
+  --color-mocha: #45454C;       /* mid-dark gray */
+  --color-taupe: #6A6A70;       /* gray body text */
+  --color-sand: #B6B6BD;        /* silver — muted text / borders */
+  --color-gold: #C0A062;        /* satin gold accent */
+  --color-gold-light: #E4D2A0;  /* light champagne gold (on dark) */
+  --color-rose: #AEAEB6;        /* silver secondary accent */
+  --color-rose-light: #D6D6DC;  /* light silver */
+  --color-silver: #B6B6BD;
+  --color-silver-light: #D6D6DC;
+  --color-accent: #B23A2E;      /* functional error red */
+  --color-accent-dark: #8E2D24;
   --color-white: #FFFFFF;
+  --color-open: #3F7A4E;        /* "open now" status dot */
+  --color-closed: #B23A2E;      /* "closed" status dot */
 
   --font-serif: "Playfair Display", Georgia, serif;
   --font-sans: "DM Sans", system-ui, sans-serif;
@@ -45,6 +52,10 @@ body {
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Faint gold hairline used by decorative grid/dot patterns —
+     derived from the gold token so it tracks the palette. */
+  --pattern-gold-line: color-mix(in srgb, var(--color-gold) 30%, transparent);
 }
 
 /* ─── Entrance Animations ─── */
@@ -114,8 +125,8 @@ body {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(184, 146, 106, 0); }
-  50% { box-shadow: 0 0 20px 4px rgba(184, 146, 106, 0.15); }
+  0%, 100% { box-shadow: 0 0 0 0 transparent; }
+  50% { box-shadow: 0 0 20px 4px color-mix(in srgb, var(--color-gold) 15%, transparent); }
 }
 
 /* ─── Animation Utility Classes ─── */
@@ -254,11 +265,13 @@ body {
 }
 
 .header-solid {
-  background: rgba(250, 247, 242, 0.85);
+  background: color-mix(in srgb, var(--color-cream) 85%, transparent);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-color: rgba(196, 181, 165, 0.2);
-  box-shadow: 0 1px 3px rgba(26, 17, 10, 0.04), 0 4px 16px rgba(26, 17, 10, 0.03);
+  border-color: color-mix(in srgb, var(--color-sand) 25%, transparent);
+  box-shadow:
+    0 1px 3px color-mix(in srgb, var(--color-espresso) 5%, transparent),
+    0 4px 16px color-mix(in srgb, var(--color-espresso) 4%, transparent);
 }
 
 /* ─── Parallax-lite ─── */

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, MapPin, Clock, CalendarCheck } from "lucide-react";
+import { Phone, MapPin, CalendarCheck } from "lucide-react";
 import { business, navigation, hours } from "@/data";
 import { legalDocs } from "@/data/legal";
 
@@ -61,48 +61,45 @@ export function Footer() {
 
           <div>
             <h3 className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-gold-light">
-              Contact
+              Locations
             </h3>
-            <ul className="space-y-4">
-              <li>
-                <a
-                  href={business.bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-3 text-sm font-medium text-gold-light transition-colors hover:text-cream"
-                >
-                  <CalendarCheck className="mt-0.5 h-4 w-4 shrink-0 text-gold-light" />
-                  Book on Fresha
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`tel:${business.phoneRaw}`}
-                  className="flex items-start gap-3 text-sm text-sand/60 transition-colors hover:text-cream"
-                >
-                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold-light" />
-                  {business.phone}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`https://maps.google.com/?q=${encodeURIComponent(business.address.full)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-3 text-sm text-sand/60 transition-colors hover:text-cream"
-                >
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-light" />
-                  <span>
-                    {business.address.street}
-                    <br />
-                    {business.address.city}, {business.address.province}
-                  </span>
-                </a>
-              </li>
-              <li className="flex items-start gap-3 text-sm text-sand/60">
-                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-gold-light" />
-                <span>Mon–Wed 11–6 · Thu–Fri 11–8 · Sat–Sun 11–4</span>
-              </li>
+            <a
+              href={business.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mb-5 flex items-center gap-3 text-sm font-medium text-gold-light transition-colors hover:text-cream"
+            >
+              <CalendarCheck className="h-4 w-4 shrink-0 text-gold-light" />
+              Book on Fresha
+            </a>
+            <ul className="space-y-5">
+              {business.locations.map((loc) => (
+                <li key={loc.name}>
+                  <p className="text-xs font-medium uppercase tracking-[0.15em] text-cream/80">
+                    {loc.name}
+                  </p>
+                  <a
+                    href={`https://maps.google.com/?q=${encodeURIComponent(loc.full)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 flex items-start gap-3 text-sm text-sand/60 transition-colors hover:text-cream"
+                  >
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-light" />
+                    <span>
+                      {loc.street}
+                      <br />
+                      {loc.city}, {loc.province}
+                    </span>
+                  </a>
+                  <a
+                    href={`tel:${loc.phoneRaw}`}
+                    className="mt-2 flex items-center gap-3 text-sm text-sand/60 transition-colors hover:text-cream"
+                  >
+                    <Phone className="h-4 w-4 shrink-0 text-gold-light" />
+                    {loc.phone}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
